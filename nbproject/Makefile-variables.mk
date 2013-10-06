@@ -7,21 +7,21 @@ CND_BASEDIR=`pwd`
 CND_BUILDDIR=build
 CND_DISTDIR=dist
 # Debug configuration
-CND_PLATFORM_Debug=GNU-MacOSX
-CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-MacOSX
-CND_ARTIFACT_NAME_Debug=liblib.dylib
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-MacOSX/liblib.dylib
-CND_PACKAGE_DIR_Debug=dist/Debug/GNU-MacOSX/package
-CND_PACKAGE_NAME_Debug=liblib.dylib.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-MacOSX/package/liblib.dylib.tar
+CND_PLATFORM_Debug=GNU-Linux-x86
+CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux-x86
+CND_ARTIFACT_NAME_Debug=libsimplegl.so
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux-x86/libsimplegl.so
+CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux-x86/package
+CND_PACKAGE_NAME_Debug=libsimplegl.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux-x86/package/libsimplegl.so.tar
 # Release configuration
-CND_PLATFORM_Release=GNU-MacOSX
-CND_ARTIFACT_DIR_Release=dist/Release/GNU-MacOSX
-CND_ARTIFACT_NAME_Release=liblib.dylib
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-MacOSX/liblib.dylib
-CND_PACKAGE_DIR_Release=dist/Release/GNU-MacOSX/package
-CND_PACKAGE_NAME_Release=liblib.dylib.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-MacOSX/package/liblib.dylib.tar
+CND_PLATFORM_Release=GNU-Linux-x86
+CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux-x86
+CND_ARTIFACT_NAME_Release=libsimplegl.so
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux-x86/libsimplegl.so
+CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux-x86/package
+CND_PACKAGE_NAME_Release=libsimplegl.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux-x86/package/libsimplegl.so.tar
 #
 # include compiler specific variables
 #

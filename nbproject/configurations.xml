@@ -12,7 +12,30 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>idi.cpp</itemPath>
+      <itemPath>states/BackgroundSelector.cpp</itemPath>
+      <itemPath>states/BackgroundSelector.h</itemPath>
+      <itemPath>Color.cpp</itemPath>
+      <itemPath>Color.h</itemPath>
+      <itemPath>Engine.cpp</itemPath>
+      <itemPath>Engine.h</itemPath>
+      <itemPath>Object.cpp</itemPath>
+      <itemPath>Object.h</itemPath>
+      <itemPath>State.cpp</itemPath>
+      <itemPath>State.h</itemPath>
+      <itemPath>StateMachine.cpp</itemPath>
+      <itemPath>StateMachine.h</itemPath>
+      <itemPath>objects/Teapot.cpp</itemPath>
+      <itemPath>objects/Teapot.h</itemPath>
+      <itemPath>objects/Triangle.cpp</itemPath>
+      <itemPath>objects/Triangle.h</itemPath>
+      <itemPath>states/TriangleSelector.cpp</itemPath>
+      <itemPath>states/TriangleSelector.h</itemPath>
+      <itemPath>Vertex.cpp</itemPath>
+      <itemPath>Vertex.h</itemPath>
+      <itemPath>Viewport.cpp</itemPath>
+      <itemPath>Viewport.h</itemPath>
+      <itemPath>Window.cpp</itemPath>
+      <itemPath>Window.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
