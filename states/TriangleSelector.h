@@ -10,7 +10,7 @@
 #ifndef TRIANGLESELECTOR_H
 #define	TRIANGLESELECTOR_H
 
-class TriangleSelector : State
+class TriangleSelector : public State
 {
     Window* window;   
     Triangle** triangle;

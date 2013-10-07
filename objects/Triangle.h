@@ -8,7 +8,7 @@
 #ifndef TRIANGLE_H
 #define	TRIANGLE_H
 
-class Triangle : Object
+class Triangle : public Object
 {
     Vertex* a;
     Vertex* b;

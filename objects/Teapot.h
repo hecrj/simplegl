@@ -8,7 +8,7 @@
 #ifndef TEAPOT_H
 #define	TEAPOT_H
 
-class Teapot : Object
+class Teapot : public Object
 {
     double size;
     

@@ -8,7 +8,7 @@
 #ifndef BACKGROUNDSELECTOR_H
 #define	BACKGROUNDSELECTOR_H
 
-class BackgroundSelector
+class BackgroundSelector : public State
 {
     Window* window;
     
