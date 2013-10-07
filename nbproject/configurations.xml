@@ -20,6 +20,8 @@
       <itemPath>Engine.h</itemPath>
       <itemPath>Object.cpp</itemPath>
       <itemPath>Object.h</itemPath>
+      <itemPath>/Users/hector0193/Proyectos/simplegl/states/RotationTool.cpp</itemPath>
+      <itemPath>/Users/hector0193/Proyectos/simplegl/states/RotationTool.h</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>StateMachine.cpp</itemPath>

@@ -42,6 +42,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Vertex.o \
 	${OBJECTDIR}/Engine.o \
 	${OBJECTDIR}/Color.o \
+	${OBJECTDIR}/_ext/702807724/RotationTool.o \
 	${OBJECTDIR}/objects/Triangle.o \
 	${OBJECTDIR}/Object.o \
 	${OBJECTDIR}/states/TriangleSelector.o \
@@ -107,6 +108,11 @@ ${OBJECTDIR}/Color.o: Color.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Color.o Color.cpp
+
+${OBJECTDIR}/_ext/702807724/RotationTool.o: /Users/hector0193/Proyectos/simplegl/states/RotationTool.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/702807724
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/702807724/RotationTool.o /Users/hector0193/Proyectos/simplegl/states/RotationTool.cpp
 
 ${OBJECTDIR}/objects/Triangle.o: objects/Triangle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/objects
