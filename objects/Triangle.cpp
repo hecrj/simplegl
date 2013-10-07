@@ -16,13 +16,13 @@
 Triangle* Triangle::def()
 {
     return new Triangle(
-        new Vertex(-0.5, -1.0 / 3.0, 0),
-        new Vertex(0.5, -1.0 / 3.0, 0),
-        new Vertex(0, 2.0 / 3.0, 0)
+        new Point(-0.5, -1.0 / 3.0, 0),
+        new Point(0.5, -1.0 / 3.0, 0),
+        new Point(0, 2.0 / 3.0, 0)
     );
 }
 
-Triangle::Triangle(Vertex* a, Vertex* b, Vertex *c)
+Triangle::Triangle(Point* a, Point* b, Point *c)
 {
     this->a = a;
     this->b = b;

@@ -4,16 +4,16 @@
  */
 
 #include "Color.h"
-#include "Vertex.h"
+#include "Point.h"
 
 #ifndef OBJECT_H
 #define	OBJECT_H
 
 class Object
 {
-    Vertex position;
+    Point position;
+    Point angles;
     Color color;
-    Vertex angles;
     
 public:
     Object();

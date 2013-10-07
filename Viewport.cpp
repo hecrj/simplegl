@@ -45,7 +45,7 @@ void Viewport::reshape(int windowWidth, int windowHeight)
     glViewport(x, y, width, height);
 }
 
-Vertex* Viewport::getVertex(int mx, int my)
+Point* Viewport::getVertex(int mx, int my)
 {
     mx = mx - x;
     my = (height - my) + y;
@@ -53,5 +53,5 @@ Vertex* Viewport::getVertex(int mx, int my)
     double vx = ((double)mx / width) * 2 - 1;
     double vy = ((double)my / height) * 2 - 1;
 
-    return new Vertex(vx, vy, 0);
+    return new Point(vx, vy, 0);
 }

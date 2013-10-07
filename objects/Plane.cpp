@@ -17,15 +17,15 @@ Plane::Plane(double x, double y, double z, double length) : Object(x, y, z)
 {
     length /= 2.0;
     triangle1 = new Triangle(
-            new Vertex(-length, 0, -length),
-            new Vertex(-length, 0, length),
-            new Vertex(length, 0, length)
+            new Point(-length, 0, -length),
+            new Point(-length, 0, length),
+            new Point(length, 0, length)
             );
     
     triangle2 = new Triangle(
-            new Vertex(-length, 0, -length),
-            new Vertex(length, 0, -length),
-            new Vertex(length, 0, length)
+            new Point(-length, 0, -length),
+            new Point(length, 0, -length),
+            new Point(length, 0, length)
             );
 }
 

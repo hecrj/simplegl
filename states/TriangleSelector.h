@@ -14,9 +14,9 @@ class TriangleSelector : public State
 {
     Window* window;   
     Triangle** triangle;
-    Vertex* a;
-    Vertex* b;
-    Vertex* c;
+    Point* a;
+    Point* b;
+    Point* c;
     bool completed;
     
 public:

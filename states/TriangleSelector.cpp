@@ -61,7 +61,7 @@ void TriangleSelector::mousePressed(int buttonId, int state, int x, int y)
     if(buttonId != GLUT_LEFT_BUTTON || state == GLUT_DOWN)
         return;
 
-    Vertex* v = window->getViewportVertex(x, y);
+    Point* v = window->getViewportVertex(x, y);
 
     cout << "New vertex defined at: (" << v->x << ", " << v->y << ", " << v->z << ")" << endl;
 

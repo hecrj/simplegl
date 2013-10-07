@@ -3,20 +3,20 @@
  * Author: hector
  */
 #include "../Object.h"
-#include "../Vertex.h"
+#include "../Point.h"
 
 #ifndef TRIANGLE_H
 #define	TRIANGLE_H
 
 class Triangle : public Object
 {
-    Vertex* a;
-    Vertex* b;
-    Vertex* c;
+    Point* a;
+    Point* b;
+    Point* c;
     
 public:
     static Triangle* def();
-    Triangle(Vertex* a, Vertex* b, Vertex *c);
+    Triangle(Point* a, Point* b, Point *c);
     virtual ~Triangle();
     
 protected:

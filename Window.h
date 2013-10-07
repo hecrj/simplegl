@@ -19,7 +19,7 @@ public:
     virtual ~Window();
     void reshape(int width, int height);
     void init();
-    Vertex* getViewportVertex(int x, int y);
+    Point* getViewportVertex(int x, int y);
     int getWidth();
     int getHeight();
     

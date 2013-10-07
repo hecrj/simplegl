@@ -51,7 +51,7 @@ void Window::init()
     glutCreateWindow(name);
 }
 
-Vertex* Window::getViewportVertex(int x, int y)
+Point* Window::getViewportVertex(int x, int y)
 {
     return viewport->getVertex(x, y);
 }

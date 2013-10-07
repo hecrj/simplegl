@@ -3,16 +3,16 @@
  * Author: hector
  */
 
-#ifndef VERTEX_H
-#define	VERTEX_H
+#ifndef POINT_H
+#define	POINT_H
 
-struct Vertex
+struct Point
 {
     double x, y, z;
 
-    Vertex();
-    Vertex(double x, double y, double z);
-    virtual ~Vertex();
+    Point();
+    Point(double x, double y, double z);
+    virtual ~Point();
     void draw() const;
     
 private:

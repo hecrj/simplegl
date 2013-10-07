@@ -3,7 +3,7 @@
  * Author: hector
  */
 
-#include "Vertex.h"
+#include "Point.h"
 
 #if defined(__APPLE__)
   #include <OpenGL/OpenGl.h>
@@ -13,22 +13,22 @@
   #include <GL/freeglut.h>
 #endif
 
-Vertex::Vertex()
+Point::Point()
 {
     x = y = z = 0;
 }
 
-Vertex::Vertex(double x, double y, double z)
+Point::Point(double x, double y, double z)
 {
     this->x = x;
     this->y = y;
     this->z = z;
 }
 
-Vertex::~Vertex()
+Point::~Point()
 { }
 
-void Vertex::draw() const
+void Point::draw() const
 {
     glVertex3d(x, y, z);
 }

@@ -39,17 +39,19 @@ OBJECTFILES= \
 	${OBJECTDIR}/states/BackgroundSelector.o \
 	${OBJECTDIR}/tools/MoveTool.o \
 	${OBJECTDIR}/objects/Sphere.o \
+	${OBJECTDIR}/Point.o \
 	${OBJECTDIR}/objects/Snowman.o \
 	${OBJECTDIR}/Tool.o \
 	${OBJECTDIR}/Viewport.o \
 	${OBJECTDIR}/Window.o \
-	${OBJECTDIR}/Vertex.o \
 	${OBJECTDIR}/Engine.o \
 	${OBJECTDIR}/tools/RotationTool.o \
 	${OBJECTDIR}/Color.o \
 	${OBJECTDIR}/objects/Triangle.o \
 	${OBJECTDIR}/Object.o \
 	${OBJECTDIR}/states/TriangleSelector.o \
+	${OBJECTDIR}/vendor/ModelLoader.o \
+	${OBJECTDIR}/objects/Model.o \
 	${OBJECTDIR}/objects/Teapot.o \
 	${OBJECTDIR}/objects/Cone.o \
 	${OBJECTDIR}/StateMachine.o \
@@ -100,6 +102,11 @@ ${OBJECTDIR}/objects/Sphere.o: objects/Sphere.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Sphere.o objects/Sphere.cpp
 
+${OBJECTDIR}/Point.o: Point.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Point.o Point.cpp
+
 ${OBJECTDIR}/objects/Snowman.o: objects/Snowman.cpp 
 	${MKDIR} -p ${OBJECTDIR}/objects
 	${RM} $@.d
@@ -119,11 +126,6 @@ ${OBJECTDIR}/Window.o: Window.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Window.o Window.cpp
-
-${OBJECTDIR}/Vertex.o: Vertex.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Vertex.o Vertex.cpp
 
 ${OBJECTDIR}/Engine.o: Engine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -154,6 +156,16 @@ ${OBJECTDIR}/states/TriangleSelector.o: states/TriangleSelector.cpp
 	${MKDIR} -p ${OBJECTDIR}/states
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/states/TriangleSelector.o states/TriangleSelector.cpp
+
+${OBJECTDIR}/vendor/ModelLoader.o: vendor/ModelLoader.cpp 
+	${MKDIR} -p ${OBJECTDIR}/vendor
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/vendor/ModelLoader.o vendor/ModelLoader.cpp
+
+${OBJECTDIR}/objects/Model.o: objects/Model.cpp 
+	${MKDIR} -p ${OBJECTDIR}/objects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Model.o objects/Model.cpp
 
 ${OBJECTDIR}/objects/Teapot.o: objects/Teapot.cpp 
 	${MKDIR} -p ${OBJECTDIR}/objects

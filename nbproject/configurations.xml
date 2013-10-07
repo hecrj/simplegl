@@ -15,6 +15,8 @@
       <logicalFolder name="objects" displayName="objects" projectFiles="true">
         <itemPath>objects/Cone.cpp</itemPath>
         <itemPath>objects/Cone.h</itemPath>
+        <itemPath>objects/Model.cpp</itemPath>
+        <itemPath>objects/Model.h</itemPath>
         <itemPath>objects/Plane.cpp</itemPath>
         <itemPath>objects/Plane.h</itemPath>
         <itemPath>objects/Snowman.cpp</itemPath>
@@ -38,6 +40,10 @@
         <itemPath>tools/RotationTool.cpp</itemPath>
         <itemPath>tools/RotationTool.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="vendor" displayName="vendor" projectFiles="true">
+        <itemPath>vendor/ModelLoader.cpp</itemPath>
+        <itemPath>vendor/ModelLoader.h</itemPath>
+      </logicalFolder>
       <itemPath>Color.cpp</itemPath>
       <itemPath>Color.h</itemPath>
       <itemPath>Engine.cpp</itemPath>
@@ -45,14 +51,14 @@
       <itemPath>Makefile</itemPath>
       <itemPath>Object.cpp</itemPath>
       <itemPath>Object.h</itemPath>
+      <itemPath>Point.cpp</itemPath>
+      <itemPath>Point.h</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>StateMachine.cpp</itemPath>
       <itemPath>StateMachine.h</itemPath>
       <itemPath>Tool.cpp</itemPath>
       <itemPath>Tool.h</itemPath>
-      <itemPath>Vertex.cpp</itemPath>
-      <itemPath>Vertex.h</itemPath>
       <itemPath>Viewport.cpp</itemPath>
       <itemPath>Viewport.h</itemPath>
       <itemPath>Window.cpp</itemPath>

@@ -51,7 +51,7 @@ void RotationTool::mouseMotion(int x, int y)
     
     while(it != objects.end())
     {
-        (*it)->rotate(rY, rX, 0);
+        (*it)->rotate(-rY, -rX, 0);
         ++it;
     }
     

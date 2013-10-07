@@ -2,7 +2,7 @@
  * File:   Viewport.h
  * Author: hector
  */
-#include "Vertex.h"
+#include "Point.h"
 
 #ifndef VIEWPORT_H
 #define	VIEWPORT_H
@@ -18,7 +18,7 @@ public:
     Viewport(int width, int height);
     virtual ~Viewport();
     void reshape(int windowWidth, int windowHeight);
-    Vertex* getVertex(int mx, int my);
+    Point* getVertex(int mx, int my);
     
 private:
 
