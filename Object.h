@@ -11,8 +11,10 @@
 
 class Object
 {
+protected:
     Point position;
     Point angles;
+    Point scales;
     Color color;
     
 public:
@@ -22,11 +24,12 @@ public:
     virtual void setColor(double r, double g, double b);
     void rotate(double x, double y, double z);
     void translate(double x, double y, double z);
+    void scale(double x, double y, double z);
     virtual void draw() const;
-    void drawTransformations() const;
     
 protected:
     virtual void drawGeom() const = 0;
+    virtual void drawTransformations() const;
 
 };
 

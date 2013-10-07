@@ -22,7 +22,7 @@ Triangle* Triangle::def()
     );
 }
 
-Triangle::Triangle(Point* a, Point* b, Point *c)
+Triangle::Triangle(Point* a, Point* b, Point *c) : Object()
 {
     this->a = a;
     this->b = b;

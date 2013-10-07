@@ -40,8 +40,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/tools/MoveTool.o \
 	${OBJECTDIR}/objects/Sphere.o \
 	${OBJECTDIR}/Point.o \
-	${OBJECTDIR}/objects/Snowman.o \
 	${OBJECTDIR}/Tool.o \
+	${OBJECTDIR}/objects/Snowman.o \
 	${OBJECTDIR}/Viewport.o \
 	${OBJECTDIR}/Window.o \
 	${OBJECTDIR}/Engine.o \
@@ -107,15 +107,15 @@ ${OBJECTDIR}/Point.o: Point.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Point.o Point.cpp
 
-${OBJECTDIR}/objects/Snowman.o: objects/Snowman.cpp 
-	${MKDIR} -p ${OBJECTDIR}/objects
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Snowman.o objects/Snowman.cpp
-
 ${OBJECTDIR}/Tool.o: Tool.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Tool.o Tool.cpp
+
+${OBJECTDIR}/objects/Snowman.o: objects/Snowman.cpp 
+	${MKDIR} -p ${OBJECTDIR}/objects
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Snowman.o objects/Snowman.cpp
 
 ${OBJECTDIR}/Viewport.o: Viewport.cpp 
 	${MKDIR} -p ${OBJECTDIR}

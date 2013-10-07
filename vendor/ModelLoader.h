@@ -49,7 +49,7 @@ class ModelLoader : public Object
 public:
     ModelLoader();
     ~ModelLoader();
-    void load(std::string filename);
+    virtual void load(std::string filename);
 
     const std::vector<Vertex>& vertices() const
     {
@@ -69,7 +69,7 @@ public:
     void dumpStats() const;
     void dumpModel() const;
 
-private:
+protected:
     std::vector<Vertex> _vertices;
     std::vector<Normal> _normals;
     std::vector<Face> _faces;

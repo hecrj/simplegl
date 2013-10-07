@@ -13,7 +13,7 @@
   #include <GL/freeglut.h>
 #endif
 
-Teapot::Teapot(double size)
+Teapot::Teapot(double size) : Object()
 {
     this->size = size;
 }
