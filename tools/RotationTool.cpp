@@ -27,7 +27,7 @@ RotationTool::~RotationTool()
 string RotationTool::getDescription() const
 {
     return "Rotation tool:\n"
-            "Press and movle the mouse to rotate some objects.";
+            "Press and move the mouse to rotate some objects.";
 }
 
 void RotationTool::mousePressed(int buttonId, int state, int x, int y)
