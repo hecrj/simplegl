@@ -13,8 +13,11 @@ using namespace std;
 #ifndef ENGINE_H
 #define	ENGINE_H
 
-class Engine
+class Engine : public Object
 {
+    double x, y, z;
+    double angleX, angleY, angleZ;
+    
 public:
     Window* window;
     map<string, Object*> objects;
@@ -29,6 +32,7 @@ public:
     void draw() const;
 private:
     void drawAxis() const;
+    void drawGeom() const;
 };
 
 #endif	/* ENGINE_H */

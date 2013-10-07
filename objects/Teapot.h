@@ -15,8 +15,9 @@ class Teapot : public Object
 public:
     Teapot(double size);
     virtual ~Teapot();
-    virtual void draw() const;
-private:
+
+protected:
+    void drawGeom() const;
 
 };
 

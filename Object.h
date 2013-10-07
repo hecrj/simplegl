@@ -11,16 +11,21 @@
 
 class Object
 {
+    Vertex position;
     Color color;
     Vertex angles;
     
 public:
     Object();
+    Object(double x, double y, double z);
     virtual ~Object();
     void rotate(double x, double y, double z);
+    void translate(double x, double y, double z);
     virtual void draw() const;
+    void drawTransformations() const;
     
-private:
+protected:
+    virtual void drawGeom() const = 0;
 
 };
 

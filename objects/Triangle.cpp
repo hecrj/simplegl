@@ -36,7 +36,7 @@ Triangle::~Triangle()
     delete c;
 }
 
-void Triangle::draw() const
+void Triangle::drawGeom() const
 {
     Object::draw();
 

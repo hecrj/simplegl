@@ -23,9 +23,7 @@ Teapot::~Teapot()
 
 }
 
-void Teapot::draw() const
+void Teapot::drawGeom() const
 {
-    Object::draw();
-
     glutWireTeapot(size);
 }

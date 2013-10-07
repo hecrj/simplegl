@@ -17,6 +17,8 @@ Engine::Engine(const char* windowName)
 {
     window = new Window(windowName);
     objects = map<string, Object*>();
+    x = y = z = 0;
+    angleX = angleY = angleZ = 0;
 }
 
 Engine::~Engine()
@@ -69,25 +71,18 @@ void Engine::removeObject(string name)
 void Engine::draw() const
 {
     glClear(GL_COLOR_BUFFER_BIT);
-
+    
+    glLoadIdentity();
+    
+    drawTransformations();
     drawAxis();
-
-    // Draw objects
-    map<string, Object*>::const_iterator it = objects.begin();
-
-    while(it != objects.end())
-    {
-        (*it).second->draw();
-        ++it;
-    }
+    drawGeom();
 
     glutSwapBuffers();
 }
 
 void Engine::drawAxis() const
 {
-    glLoadIdentity();
-
     glBegin(GL_LINES);
 
     glColor3d(1, 0, 0);
@@ -103,4 +98,16 @@ void Engine::drawAxis() const
     glVertex3d(0, 0, 1);
 
     glEnd();
+}
+
+void Engine::drawGeom() const
+{
+    // Draw objects
+    map<string, Object*>::const_iterator it = objects.begin();
+
+    while(it != objects.end())
+    {
+        (*it).second->draw();
+        ++it;
+    }
 }

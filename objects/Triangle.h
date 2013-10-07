@@ -18,10 +18,9 @@ public:
     static Triangle* def();
     Triangle(Vertex* a, Vertex* b, Vertex *c);
     virtual ~Triangle();
-    virtual void draw() const;
     
-private:
-
+protected:
+    void drawGeom() const;
 };
 
 #endif	/* TRIANGLE_H */
