@@ -12,34 +12,45 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>states/BackgroundSelector.cpp</itemPath>
-      <itemPath>states/BackgroundSelector.h</itemPath>
+      <logicalFolder name="objects" displayName="objects" projectFiles="true">
+        <itemPath>objects/Cone.cpp</itemPath>
+        <itemPath>objects/Cone.h</itemPath>
+        <itemPath>objects/Plane.cpp</itemPath>
+        <itemPath>objects/Plane.h</itemPath>
+        <itemPath>objects/Snowman.cpp</itemPath>
+        <itemPath>objects/Snowman.h</itemPath>
+        <itemPath>objects/Sphere.cpp</itemPath>
+        <itemPath>objects/Sphere.h</itemPath>
+        <itemPath>objects/Teapot.cpp</itemPath>
+        <itemPath>objects/Teapot.h</itemPath>
+        <itemPath>objects/Triangle.cpp</itemPath>
+        <itemPath>objects/Triangle.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="states" displayName="states" projectFiles="true">
+        <itemPath>states/BackgroundSelector.cpp</itemPath>
+        <itemPath>states/BackgroundSelector.h</itemPath>
+        <itemPath>states/TriangleSelector.cpp</itemPath>
+        <itemPath>states/TriangleSelector.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="tools" displayName="tools" projectFiles="true">
+        <itemPath>tools/MoveTool.cpp</itemPath>
+        <itemPath>tools/MoveTool.h</itemPath>
+        <itemPath>tools/RotationTool.cpp</itemPath>
+        <itemPath>tools/RotationTool.h</itemPath>
+      </logicalFolder>
       <itemPath>Color.cpp</itemPath>
       <itemPath>Color.h</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Cone.cpp</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Cone.h</itemPath>
       <itemPath>Engine.cpp</itemPath>
       <itemPath>Engine.h</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/MoveTool.cpp</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/MoveTool.h</itemPath>
+      <itemPath>Makefile</itemPath>
       <itemPath>Object.cpp</itemPath>
       <itemPath>Object.h</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/RotationTool.cpp</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/RotationTool.h</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Sphere.cpp</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Sphere.h</itemPath>
       <itemPath>State.cpp</itemPath>
       <itemPath>State.h</itemPath>
       <itemPath>StateMachine.cpp</itemPath>
       <itemPath>StateMachine.h</itemPath>
-      <itemPath>objects/Teapot.cpp</itemPath>
-      <itemPath>objects/Teapot.h</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/Tool.cpp</itemPath>
-      <itemPath>/Users/hector0193/Proyectos/idi/Bloc2/simplegl/Tool.h</itemPath>
-      <itemPath>objects/Triangle.cpp</itemPath>
-      <itemPath>objects/Triangle.h</itemPath>
-      <itemPath>states/TriangleSelector.cpp</itemPath>
-      <itemPath>states/TriangleSelector.h</itemPath>
+      <itemPath>Tool.cpp</itemPath>
+      <itemPath>Tool.h</itemPath>
       <itemPath>Vertex.cpp</itemPath>
       <itemPath>Vertex.h</itemPath>
       <itemPath>Viewport.cpp</itemPath>
@@ -59,6 +70,9 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="Debug" type="2">
@@ -67,9 +81,12 @@
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
-        <ccTool>
-          <commandLine>-framework OpenGL -framework GLUT</commandLine>
-        </ccTool>
+        <linkerTool>
+          <linkerLibItems>
+            <linkerLibLibItem>glut</linkerLibLibItem>
+            <linkerLibLibItem>GL</linkerLibLibItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
     </conf>
     <conf name="Release" type="2">

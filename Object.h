@@ -19,6 +19,7 @@ public:
     Object();
     Object(double x, double y, double z);
     virtual ~Object();
+    virtual void setColor(double r, double g, double b);
     void rotate(double x, double y, double z);
     void translate(double x, double y, double z);
     virtual void draw() const;

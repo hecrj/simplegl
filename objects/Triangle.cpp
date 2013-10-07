@@ -38,8 +38,6 @@ Triangle::~Triangle()
 
 void Triangle::drawGeom() const
 {
-    Object::draw();
-
     glBegin(GL_TRIANGLES);
 
     a->draw();

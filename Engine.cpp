@@ -45,6 +45,7 @@ void Engine::init(int *argc, char **argv)
     glLoadIdentity();
     glOrtho(-1, 1, -1, 1, -1, 1);
     glMatrixMode(GL_MODELVIEW);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void Engine::loop()
@@ -70,7 +71,7 @@ void Engine::removeObject(string name)
 
 void Engine::draw() const
 {
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glLoadIdentity();
     

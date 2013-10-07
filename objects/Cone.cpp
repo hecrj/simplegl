@@ -24,5 +24,5 @@ Cone::~Cone() {
 
 void Cone::drawGeom() const
 {
-    glutWireCone(base, height, 10, 10);
+    glutSolidCone(base, height, 30, 30);
 }

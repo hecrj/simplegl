@@ -32,6 +32,13 @@ Object::~Object()
 
 }
 
+void Object::setColor(double r, double g, double b)
+{
+    color.r = r;
+    color.g = g;
+    color.b = b;
+}
+
 void Object::rotate(double x, double y, double z)
 {
     angles.x = fmod(angles.x + x, 360);
@@ -48,8 +55,6 @@ void Object::translate(double x, double y, double z)
 
 void Object::draw() const
 {
-    glColor3d(color.r, color.g, color.b);
-
     glPushMatrix();
     
     drawTransformations();
@@ -60,6 +65,7 @@ void Object::draw() const
 
 void Object::drawTransformations() const
 {
+    glColor3d(color.r, color.g, color.b);
     glTranslated(position.x, position.y, position.z);
     glRotated(angles.x, 1, 0, 0);
     glRotated(angles.y, 0, 1, 0);

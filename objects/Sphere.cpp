@@ -24,5 +24,5 @@ Sphere::~Sphere() {
 
 void Sphere::drawGeom() const
 {
-    glutWireSphere(radius, 10, 10);
+    glutSolidSphere(radius, 30, 30);
 }

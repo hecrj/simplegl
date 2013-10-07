@@ -21,8 +21,8 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=GNU-MacOSX
-CND_DLIB_EXT=dylib
+CND_PLATFORM=GNU-Linux-x86
+CND_DLIB_EXT=so
 CND_CONF=Debug
 CND_DISTDIR=dist
 CND_BUILDDIR=build
@@ -35,31 +35,33 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1743844973/RotationTool.o \
-	${OBJECTDIR}/states/BackgroundSelector.o \
 	${OBJECTDIR}/State.o \
+	${OBJECTDIR}/states/BackgroundSelector.o \
+	${OBJECTDIR}/tools/MoveTool.o \
+	${OBJECTDIR}/objects/Sphere.o \
+	${OBJECTDIR}/objects/Snowman.o \
+	${OBJECTDIR}/Tool.o \
 	${OBJECTDIR}/Viewport.o \
 	${OBJECTDIR}/Window.o \
 	${OBJECTDIR}/Vertex.o \
 	${OBJECTDIR}/Engine.o \
+	${OBJECTDIR}/tools/RotationTool.o \
 	${OBJECTDIR}/Color.o \
-	${OBJECTDIR}/_ext/278205734/Cone.o \
 	${OBJECTDIR}/objects/Triangle.o \
 	${OBJECTDIR}/Object.o \
 	${OBJECTDIR}/states/TriangleSelector.o \
-	${OBJECTDIR}/_ext/278205734/Sphere.o \
 	${OBJECTDIR}/objects/Teapot.o \
-	${OBJECTDIR}/_ext/1743844973/MoveTool.o \
+	${OBJECTDIR}/objects/Cone.o \
 	${OBJECTDIR}/StateMachine.o \
-	${OBJECTDIR}/_ext/1784398881/Tool.o
+	${OBJECTDIR}/objects/Plane.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-framework OpenGL -framework GLUT
-CXXFLAGS=-framework OpenGL -framework GLUT
+CCFLAGS=
+CXXFLAGS=
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -68,7 +70,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lglut -lGL
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -76,22 +78,37 @@ LDLIBSOPTIONS=
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsimplegl.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -dynamiclib -install_name libsimplegl.${CND_DLIB_EXT} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsimplegl.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
+	${LINK.cc} -shared -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libsimplegl.${CND_DLIB_EXT} -fPIC ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/_ext/1743844973/RotationTool.o: /Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/RotationTool.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1743844973
+${OBJECTDIR}/State.o: State.cpp 
+	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1743844973/RotationTool.o /Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/RotationTool.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/State.o State.cpp
 
 ${OBJECTDIR}/states/BackgroundSelector.o: states/BackgroundSelector.cpp 
 	${MKDIR} -p ${OBJECTDIR}/states
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/states/BackgroundSelector.o states/BackgroundSelector.cpp
 
-${OBJECTDIR}/State.o: State.cpp 
+${OBJECTDIR}/tools/MoveTool.o: tools/MoveTool.cpp 
+	${MKDIR} -p ${OBJECTDIR}/tools
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools/MoveTool.o tools/MoveTool.cpp
+
+${OBJECTDIR}/objects/Sphere.o: objects/Sphere.cpp 
+	${MKDIR} -p ${OBJECTDIR}/objects
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Sphere.o objects/Sphere.cpp
+
+${OBJECTDIR}/objects/Snowman.o: objects/Snowman.cpp 
+	${MKDIR} -p ${OBJECTDIR}/objects
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Snowman.o objects/Snowman.cpp
+
+${OBJECTDIR}/Tool.o: Tool.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/State.o State.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Tool.o Tool.cpp
 
 ${OBJECTDIR}/Viewport.o: Viewport.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -113,15 +130,15 @@ ${OBJECTDIR}/Engine.o: Engine.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Engine.o Engine.cpp
 
+${OBJECTDIR}/tools/RotationTool.o: tools/RotationTool.cpp 
+	${MKDIR} -p ${OBJECTDIR}/tools
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/tools/RotationTool.o tools/RotationTool.cpp
+
 ${OBJECTDIR}/Color.o: Color.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Color.o Color.cpp
-
-${OBJECTDIR}/_ext/278205734/Cone.o: /Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Cone.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/278205734
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/278205734/Cone.o /Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Cone.cpp
 
 ${OBJECTDIR}/objects/Triangle.o: objects/Triangle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/objects
@@ -138,30 +155,25 @@ ${OBJECTDIR}/states/TriangleSelector.o: states/TriangleSelector.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/states/TriangleSelector.o states/TriangleSelector.cpp
 
-${OBJECTDIR}/_ext/278205734/Sphere.o: /Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Sphere.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/278205734
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/278205734/Sphere.o /Users/hector0193/Proyectos/idi/Bloc2/simplegl/objects/Sphere.cpp
-
 ${OBJECTDIR}/objects/Teapot.o: objects/Teapot.cpp 
 	${MKDIR} -p ${OBJECTDIR}/objects
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Teapot.o objects/Teapot.cpp
 
-${OBJECTDIR}/_ext/1743844973/MoveTool.o: /Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/MoveTool.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1743844973
+${OBJECTDIR}/objects/Cone.o: objects/Cone.cpp 
+	${MKDIR} -p ${OBJECTDIR}/objects
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1743844973/MoveTool.o /Users/hector0193/Proyectos/idi/Bloc2/simplegl/tools/MoveTool.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Cone.o objects/Cone.cpp
 
 ${OBJECTDIR}/StateMachine.o: StateMachine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/StateMachine.o StateMachine.cpp
 
-${OBJECTDIR}/_ext/1784398881/Tool.o: /Users/hector0193/Proyectos/idi/Bloc2/simplegl/Tool.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1784398881
+${OBJECTDIR}/objects/Plane.o: objects/Plane.cpp 
+	${MKDIR} -p ${OBJECTDIR}/objects
 	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1784398881/Tool.o /Users/hector0193/Proyectos/idi/Bloc2/simplegl/Tool.cpp
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Plane.o objects/Plane.cpp
 
 # Subprojects
 .build-subprojects:
