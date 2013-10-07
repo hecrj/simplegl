@@ -57,6 +57,9 @@
         <compilerSet>default</compilerSet>
       </toolsSet>
       <compileType>
+        <linkerTool>
+          <commandLine>-framework OpenGL -framework GLUT</commandLine>
+        </linkerTool>
       </compileType>
     </conf>
     <conf name="Release" type="2">
