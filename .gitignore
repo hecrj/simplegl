@@ -1,3 +1,7 @@
 dist/
 nbproject/private/
 build/
+nbproject/*.mk
+nbproject/*.bash
+nbproject/*.xml
+
