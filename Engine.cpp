@@ -34,7 +34,7 @@ Window* Engine::getWindow()
 void Engine::init(int *argc, char **argv)
 {
     glutInit(argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
     window->init();
 
@@ -45,6 +45,7 @@ void Engine::init(int *argc, char **argv)
     glLoadIdentity();
     glOrtho(-1, 1, -1, 1, -1, 1);
     glMatrixMode(GL_MODELVIEW);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
 }
 
