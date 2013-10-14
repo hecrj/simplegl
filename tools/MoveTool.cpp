@@ -51,7 +51,7 @@ void MoveTool::mouseMotion(int x, int y)
     
     while(it != objects.end())
     {
-        (*it)->translate(-tX, tY, 0);
+        (*it)->translate(-tX, 0, -tY);
         ++it;
     }
     
