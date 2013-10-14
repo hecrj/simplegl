@@ -5,11 +5,15 @@
 
 #include "Snowman.h"
 
+#define BODY_RADIUS 0.4
+#define HEAD_RADIUS 0.2
+#define NOSE_HEIGHT 0.2
+
 Snowman::Snowman(double x, double y, double z) : Object(x, y, z)
 {
-    body = new Sphere(0, 0, 0, 0.4);
-    head = new Sphere(0, 0.6, 0, 0.2);
-    nose = new Cone(0.1, 0.6, 0, 0.1, 0.2);
+    body = new Sphere(0, 0, 0, BODY_RADIUS);
+    head = new Sphere(0, 0.6, 0, HEAD_RADIUS);
+    nose = new Cone(0.1, 0.6, 0, 0.1, NOSE_HEIGHT);
     nose->setColor(1, 0.5, 0.3);
     nose->rotate(0, 90, 0);
 }
@@ -26,4 +30,9 @@ void Snowman::drawGeom() const
     body->draw();
     head->draw();
     nose->draw();
+}
+
+double Snowman::getMaxDimension() const
+{
+    return BODY_RADIUS * 2 + HEAD_RADIUS * 2;
 }

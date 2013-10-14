@@ -18,6 +18,7 @@ public:
     static Triangle* def();
     Triangle(Point* a, Point* b, Point *c);
     virtual ~Triangle();
+    double getMaxDimension() const;
     
 protected:
     void drawGeom() const;

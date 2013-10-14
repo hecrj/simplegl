@@ -13,7 +13,7 @@
   #include <GL/freeglut.h>
 #endif
 
-MoveTool::MoveTool(Window* window)
+MoveTool::MoveTool(Viewport* window)
 {
     lastX = lastY = 0;
     this->window = window;

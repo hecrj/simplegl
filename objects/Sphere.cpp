@@ -26,3 +26,8 @@ void Sphere::drawGeom() const
 {
     glutSolidSphere(radius, 30, 30);
 }
+
+double Sphere::getMaxDimension() const
+{
+    return radius;
+}

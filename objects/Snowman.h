@@ -18,6 +18,7 @@ class Snowman : public Object
 public:
     Snowman(double x, double y, double z);
     virtual ~Snowman();
+    double getMaxDimension() const;
 
 protected:
     void drawGeom() const;

@@ -40,10 +40,16 @@
         <itemPath>tools/RotationTool.cpp</itemPath>
         <itemPath>tools/RotationTool.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="utils" displayName="utils" projectFiles="true">
+        <itemPath>/Users/hector0193/Proyectos/idi/Bloc3/simplegl/math.cpp</itemPath>
+        <itemPath>/Users/hector0193/Proyectos/idi/Bloc3/simplegl/utils/math.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="vendor" displayName="vendor" projectFiles="true">
         <itemPath>vendor/ModelLoader.cpp</itemPath>
         <itemPath>vendor/ModelLoader.h</itemPath>
       </logicalFolder>
+      <itemPath>/Users/hector0193/Proyectos/idi/Bloc3/simplegl/Camera.cpp</itemPath>
+      <itemPath>/Users/hector0193/Proyectos/idi/Bloc3/simplegl/Camera.h</itemPath>
       <itemPath>Color.cpp</itemPath>
       <itemPath>Color.h</itemPath>
       <itemPath>Engine.cpp</itemPath>
@@ -61,8 +67,6 @@
       <itemPath>Tool.h</itemPath>
       <itemPath>Viewport.cpp</itemPath>
       <itemPath>Viewport.h</itemPath>
-      <itemPath>Window.cpp</itemPath>
-      <itemPath>Window.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"

@@ -13,6 +13,8 @@
   #include <GL/freeglut.h>
 #endif
 
+#include "../utils/math.h"
+
 Triangle* Triangle::def()
 {
     return new Triangle(
@@ -45,4 +47,9 @@ void Triangle::drawGeom() const
     c->draw();
 
     glEnd();
+}
+
+double Triangle::getMaxDimension() const
+{
+    return max(a->getDistance(), b->getDistance(), c->getDistance());
 }

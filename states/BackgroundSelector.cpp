@@ -13,7 +13,7 @@
   #include <GL/freeglut.h>
 #endif
 
-BackgroundSelector::BackgroundSelector(Window* window)
+BackgroundSelector::BackgroundSelector(Viewport* window)
 {
     this->window = window;
 }

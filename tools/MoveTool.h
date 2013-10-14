@@ -3,19 +3,19 @@
  * Author: hector0193
  */
 #include "../Tool.h"
-#include "../Window.h"
+#include "../Viewport.h"
 
 #ifndef MOVETOOL_H
 #define	MOVETOOL_H
 
 class MoveTool : public Tool
 {
-    Window* window;
+    Viewport* window;
     int lastX;
     int lastY;
     
 public:
-    MoveTool(Window* window);
+    MoveTool(Viewport* window);
     virtual ~MoveTool();
     string getDescription() const;
     void mousePressed(int buttonId, int state, int x, int y);

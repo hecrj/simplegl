@@ -27,3 +27,9 @@ void Teapot::drawGeom() const
 {
     glutWireTeapot(size);
 }
+
+
+double Teapot::getMaxDimension() const
+{
+    return size; // TODO Confirm
+}

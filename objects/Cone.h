@@ -15,6 +15,7 @@ class Cone : public Object
 public:
     Cone(double x, double y, double z, double base, double height);
     virtual ~Cone();
+    double getMaxDimension() const;
 
 protected:
     void drawGeom() const;

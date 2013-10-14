@@ -1,27 +1,31 @@
 /* 
- * File:   Viewport.h
+ * File:   Window.h
  * Author: hector
  */
-#include "Point.h"
 
 #ifndef VIEWPORT_H
 #define	VIEWPORT_H
 
+#include "Point.h"
+
 class Viewport
 {
-    int x;
-    int y;
+    const char* name;
     int width;
     int height;
     
 public:
-    Viewport(int width, int height);
+    Viewport(const char* name, int width = 600, int height = 600);
     virtual ~Viewport();
-    void reshape(int windowWidth, int windowHeight);
-    Point* getVertex(int mx, int my);
+    void reshape(int width, int height);
+    void init();
+    Point* getViewportVertex(int x, int y);
+    int getWidth();
+    int getHeight();
+    double getAspectRatio();
     
 private:
 
 };
 
-#endif	/* VIEWPORT_H */
+#endif	/* WINDOW_H */

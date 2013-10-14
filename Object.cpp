@@ -14,6 +14,7 @@
 #endif
 
 #include <math.h>
+#include "utils/math.h"
 
 Object::Object()
 {
@@ -81,4 +82,13 @@ void Object::drawTransformations() const
     glRotated(angles.y, 0, 1, 0);
     glRotated(angles.z, 0, 0, 1);
     glScaled(scales.x, scales.y, scales.z);
+}
+
+double Object::getContainerSphereRadius() const
+{
+    double maxDim = getMaxDimension();
+    
+    maxDim = max(maxDim * scales.x, maxDim * scales.y, maxDim * scales.z);
+    
+    return maxDim + position.getDistance();
 }

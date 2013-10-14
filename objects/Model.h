@@ -32,6 +32,7 @@ public:
     double getRFBX() const;
     double getRFBY() const;
     double getRFBZ() const;
+    double getMaxDimension() const;
 
 protected:
     void drawGeom() const;

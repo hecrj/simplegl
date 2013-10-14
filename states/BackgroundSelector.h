@@ -3,17 +3,17 @@
  * Author: hector
  */
 #include "../State.h"
-#include "../Window.h"
+#include "../Viewport.h"
 
 #ifndef BACKGROUNDSELECTOR_H
 #define	BACKGROUNDSELECTOR_H
 
 class BackgroundSelector : public State
 {
-    Window* window;
+    Viewport* window;
     
 public:
-    BackgroundSelector(Window* window);
+    BackgroundSelector(Viewport* window);
     virtual ~BackgroundSelector();
     string getDescription() const;
     void mouseMotion(int x, int y);

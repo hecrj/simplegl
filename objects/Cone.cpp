@@ -11,6 +11,7 @@
 #endif
 
 #include "Cone.h"
+#include "../utils/math.h"
 
 Cone::Cone(double x, double y, double z, double base, double height) : Object(x, y, z)
 {
@@ -25,4 +26,9 @@ Cone::~Cone() {
 void Cone::drawGeom() const
 {
     glutSolidCone(base, height, 30, 30);
+}
+
+double Cone::getMaxDimension() const
+{
+    return height;
 }

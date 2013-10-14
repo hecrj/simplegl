@@ -4,6 +4,7 @@
  */
 
 #include "Point.h"
+#include <cmath>
 
 #if defined(__APPLE__)
   #include <OpenGL/OpenGl.h>
@@ -31,4 +32,9 @@ Point::~Point()
 void Point::draw() const
 {
     glVertex3d(x, y, z);
+}
+
+double Point::getDistance() const
+{
+    return sqrt(x*x + y*y + z*z);
 }

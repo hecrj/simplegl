@@ -14,6 +14,7 @@ class Sphere : public Object
 public:
     Sphere(double x, double y, double z, double radius);
     virtual ~Sphere();
+    double getMaxDimension() const;
 
 protected:
     void drawGeom() const;

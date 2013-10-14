@@ -15,7 +15,7 @@
 
 Engine::Engine(const char* windowName)
 {
-    window = new Window(windowName);
+    camera = new Camera(windowName);
     objects = map<string, Object*>();
     x = y = z = 0;
     angleX = angleY = angleZ = 0;
@@ -26,9 +26,9 @@ Engine::~Engine()
     
 }
 
-Window* Engine::getWindow()
+Camera* Engine::getCamera()
 {
-    return window;
+    return camera;
 }
 
 void Engine::init(int *argc, char **argv)
@@ -36,7 +36,7 @@ void Engine::init(int *argc, char **argv)
     glutInit(argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
-    window->init();
+    camera->init();
 
     // Default clear color
     glClearColor(0, 0, 0, 1);
@@ -47,6 +47,29 @@ void Engine::init(int *argc, char **argv)
     glMatrixMode(GL_MODELVIEW);
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
+}
+
+void Engine::focus(double distance)
+{
+    camera->focus(getMaxDimension(), distance);
+}
+
+double Engine::getMaxDimension() const
+{
+    double maxRadius = 0;
+    
+    // Draw objects
+    map<string, Object*>::const_iterator it = objects.begin();
+
+    while(it != objects.end())
+    {
+        double radius = (*it).second->getContainerSphereRadius();
+        
+        if(radius > maxRadius)
+            maxRadius = radius;
+    }
+    
+    return maxRadius;
 }
 
 void Engine::loop()

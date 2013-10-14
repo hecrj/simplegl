@@ -4,7 +4,7 @@
  */
 
 #include "Model.h"
-#include <iostream>
+#include "../utils/math.h"
 
 #if defined(__APPLE__)
   #include <OpenGL/OpenGl.h>
@@ -103,6 +103,11 @@ double Model::getRFBY() const
 double Model::getRFBZ() const
 {
     return rightFrontBottom.z * scales.z;
+}
+
+double Model::getMaxDimension() const
+{
+    return max(width, height, depth);
 }
 
 void Model::drawTransformations() const

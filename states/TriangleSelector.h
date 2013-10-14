@@ -5,14 +5,14 @@
 
 #include "../State.h"
 #include "../objects/Triangle.h"
-#include "../Window.h"
+#include "../Viewport.h"
 
 #ifndef TRIANGLESELECTOR_H
 #define	TRIANGLESELECTOR_H
 
 class TriangleSelector : public State
 {
-    Window* window;   
+    Viewport* window;   
     Triangle** triangle;
     Point* a;
     Point* b;
@@ -20,7 +20,7 @@ class TriangleSelector : public State
     bool completed;
     
 public:
-    TriangleSelector(Window* window, Triangle** triangle);
+    TriangleSelector(Viewport* window, Triangle** triangle);
     virtual ~TriangleSelector();
     string getDescription() const;
     void enter();

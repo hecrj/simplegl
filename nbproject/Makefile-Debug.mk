@@ -42,11 +42,12 @@ OBJECTFILES= \
 	${OBJECTDIR}/Point.o \
 	${OBJECTDIR}/Tool.o \
 	${OBJECTDIR}/objects/Snowman.o \
+	${OBJECTDIR}/_ext/1587885376/math.o \
 	${OBJECTDIR}/Viewport.o \
-	${OBJECTDIR}/Window.o \
 	${OBJECTDIR}/Engine.o \
 	${OBJECTDIR}/tools/RotationTool.o \
 	${OBJECTDIR}/Color.o \
+	${OBJECTDIR}/_ext/1587885376/Camera.o \
 	${OBJECTDIR}/objects/Triangle.o \
 	${OBJECTDIR}/Object.o \
 	${OBJECTDIR}/states/TriangleSelector.o \
@@ -117,15 +118,15 @@ ${OBJECTDIR}/objects/Snowman.o: objects/Snowman.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/objects/Snowman.o objects/Snowman.cpp
 
+${OBJECTDIR}/_ext/1587885376/math.o: /Users/hector0193/Proyectos/idi/Bloc3/simplegl/math.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1587885376
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1587885376/math.o /Users/hector0193/Proyectos/idi/Bloc3/simplegl/math.cpp
+
 ${OBJECTDIR}/Viewport.o: Viewport.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Viewport.o Viewport.cpp
-
-${OBJECTDIR}/Window.o: Window.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Window.o Window.cpp
 
 ${OBJECTDIR}/Engine.o: Engine.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -141,6 +142,11 @@ ${OBJECTDIR}/Color.o: Color.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/Color.o Color.cpp
+
+${OBJECTDIR}/_ext/1587885376/Camera.o: /Users/hector0193/Proyectos/idi/Bloc3/simplegl/Camera.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/1587885376
+	${RM} $@.d
+	$(COMPILE.cc) -g -fPIC  -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/1587885376/Camera.o /Users/hector0193/Proyectos/idi/Bloc3/simplegl/Camera.cpp
 
 ${OBJECTDIR}/objects/Triangle.o: objects/Triangle.cpp 
 	${MKDIR} -p ${OBJECTDIR}/objects

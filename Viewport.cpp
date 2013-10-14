@@ -1,7 +1,8 @@
 /** 
- * File:   Viewport.cpp
+ * File:   Window.cpp
  * Author: hector
  */
+
 #include "Viewport.h"
 
 #if defined(__APPLE__)
@@ -12,10 +13,9 @@
   #include <GL/freeglut.h>
 #endif
 
-Viewport::Viewport(int width, int height)
+Viewport::Viewport(const char* name, int width, int height)
 {
-    x = 0;
-    y = 0;
+    this->name = name;
     this->width = width;
     this->height = height;
 }
@@ -25,33 +25,36 @@ Viewport::~Viewport()
 
 }
 
-void Viewport::reshape(int windowWidth, int windowHeight)
+int Viewport::getWidth()
 {
-    x = y = 0;
-    width = windowWidth;
-    height = windowHeight;
-
-    if(width > height)
-    {
-        x = (width - height) / 2;
-        width = height;
-    }
-    else
-    {
-        y = (height - width) / 2;
-        height = width;
-    }
-
-    glViewport(x, y, width, height);
+    return width;
 }
 
-Point* Viewport::getVertex(int mx, int my)
+int Viewport::getHeight()
 {
-    mx = mx - x;
-    my = (height - my) + y;
+    return height;
+}
 
-    double vx = ((double)mx / width) * 2 - 1;
-    double vy = ((double)my / height) * 2 - 1;
+void Viewport::reshape(int width, int height)
+{
+    this->width = width;
+    this->height = height;
 
-    return new Point(vx, vy, 0);
+    glViewport(0, 0, width, height);
+}
+
+double Viewport::getAspectRatio()
+{
+    return width / (double) height;
+}
+
+void Viewport::init()
+{
+    glutInitWindowSize(width, height);
+    glutCreateWindow(name);
+}
+
+Point* Viewport::getViewportVertex(int x, int y)
+{
+    return new Point(0, 0, 0); // TODO Reimplement!
 }

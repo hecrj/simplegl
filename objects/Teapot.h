@@ -15,6 +15,7 @@ class Teapot : public Object
 public:
     Teapot(double size);
     virtual ~Teapot();
+    double getMaxDimension() const;
 
 protected:
     void drawGeom() const;

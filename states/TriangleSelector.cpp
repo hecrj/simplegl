@@ -17,7 +17,7 @@
 
 using namespace std;
 
-TriangleSelector::TriangleSelector(Window* window, Triangle** triangle)
+TriangleSelector::TriangleSelector(Viewport* window, Triangle** triangle)
 {
     this->window = window;
     this->triangle = triangle;

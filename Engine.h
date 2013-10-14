@@ -5,7 +5,7 @@
 
 #include <map>
 #include <string>
-#include "Window.h"
+#include "Camera.h"
 #include "Object.h"
 
 using namespace std;
@@ -17,19 +17,21 @@ class Engine : public Object
 {
     double x, y, z;
     double angleX, angleY, angleZ;
-    
-public:
-    Window* window;
+    Camera* camera;
     map<string, Object*> objects;
     
+public:
     Engine(const char* windowName);
     virtual ~Engine();
-    Window* getWindow();
+    Camera* getCamera();
+    void focus(double distance);
     void init(int *argc, char **argv);
     void loop();
     void addObject(string name, Object* object);
     void removeObject(string name);
     void draw() const;
+    double getMaxDimension() const;
+    
 private:
     void drawAxis() const;
     void drawGeom() const;

@@ -14,6 +14,7 @@ struct Point
     Point(double x, double y, double z);
     virtual ~Point();
     void draw() const;
+    double getDistance() const;
     
 private:
 

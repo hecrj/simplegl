@@ -26,6 +26,8 @@ public:
     void translate(double x, double y, double z);
     void scale(double x, double y, double z);
     virtual void draw() const;
+    virtual double getContainerSphereRadius() const;
+    virtual double getMaxDimension() const = 0;
     
 protected:
     virtual void drawGeom() const = 0;

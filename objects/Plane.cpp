@@ -13,9 +13,9 @@
   #include <GL/freeglut.h>
 #endif
 
-Plane::Plane(double x, double y, double z, double length) : Object(x, y, z)
+Plane::Plane(double x, double y, double z, double length2) : Object(x, y, z)
 {
-    length /= 2.0;
+    length = length2 / 2.0;
     triangle1 = new Triangle(
             new Point(-length, 0, -length),
             new Point(-length, 0, length),
@@ -45,4 +45,9 @@ void Plane::drawGeom() const
 {
     triangle1->draw();
     triangle2->draw();
+}
+
+double Plane::getMaxDimension() const
+{
+    return length;
 }
