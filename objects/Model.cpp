@@ -107,7 +107,7 @@ double Model::getRFBZ() const
 
 double Model::getMaxDimension() const
 {
-    return max(width, height, depth);
+    return max(width / 2, height / 2, depth / 2);
 }
 
 void Model::drawTransformations() const

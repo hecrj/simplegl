@@ -8,7 +8,7 @@
 #ifndef MATH_H
 #define	MATH_H
 
-#define abs(x) x > 0 ? x : -x
+#define absolute(x) x > 0 ? x : -x
 
 double max(double a, double b, double c);
 

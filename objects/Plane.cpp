@@ -4,6 +4,8 @@
  */
 
 #include "Plane.h"
+#include "../utils/math.h"
+#include <cmath>
 
 #if defined(__APPLE__)
   #include <OpenGL/OpenGl.h>
@@ -49,5 +51,13 @@ void Plane::drawGeom() const
 
 double Plane::getMaxDimension() const
 {
-    return length;
+    return max(triangle1->getMaxDimension(), triangle2->getMaxDimension(), 0);
+}
+
+double Plane::getContainerSphereRadius() const
+{
+    double d1 = getMaxDimension();
+    double d2 = position.getDistance();
+    
+    return sqrt(d1*d1 + d2*d2);
 }

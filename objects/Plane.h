@@ -19,6 +19,7 @@ public:
     virtual ~Plane();
     void setColor(double r, double g, double b);
     double getMaxDimension() const;
+    double getContainerSphereRadius() const;
     
 protected:
     void drawGeom() const;

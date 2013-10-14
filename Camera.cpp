@@ -67,11 +67,17 @@ void Camera::refocus()
     }
     else
     {
-        top *= 1 / r;
-        bottom *= 1 / r;
+        top /= r;
+        bottom /= r;
     }
     
     glOrtho(left, right, bottom, top, -distance-radius, distance+radius);
     
     glMatrixMode(GL_MODELVIEW);
+}
+
+void Camera::drawContainerSphere() const
+{
+    glColor3d(0.3, 0.3, 0.3);
+    glutWireSphere(radius, 50, 50);
 }

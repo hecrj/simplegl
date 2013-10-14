@@ -49,6 +49,11 @@ void Engine::init(int *argc, char **argv)
     glEnable(GL_DEPTH_TEST);
 }
 
+void Engine::focus()
+{
+    focus(0);
+}
+
 void Engine::focus(double distance)
 {
     camera->focus(getMaxDimension(), distance);
@@ -67,6 +72,8 @@ double Engine::getMaxDimension() const
         
         if(radius > maxRadius)
             maxRadius = radius;
+        
+        ++it;
     }
     
     return maxRadius;
@@ -135,4 +142,6 @@ void Engine::drawGeom() const
         (*it).second->draw();
         ++it;
     }
+    
+    camera->drawContainerSphere();
 }

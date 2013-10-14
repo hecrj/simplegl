@@ -21,6 +21,7 @@ public:
     void reshape(int width, int height);
     Viewport* getViewport();
     void focus(double radius, double distance);
+    void drawContainerSphere() const;
     
 private:
     void refocus();

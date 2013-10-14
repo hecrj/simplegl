@@ -24,6 +24,7 @@ public:
     Engine(const char* windowName);
     virtual ~Engine();
     Camera* getCamera();
+    void focus();
     void focus(double distance);
     void init(int *argc, char **argv);
     void loop();

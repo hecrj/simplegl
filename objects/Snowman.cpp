@@ -34,5 +34,5 @@ void Snowman::drawGeom() const
 
 double Snowman::getMaxDimension() const
 {
-    return BODY_RADIUS * 2 + HEAD_RADIUS * 2;
+    return BODY_RADIUS + HEAD_RADIUS * 2;
 }
