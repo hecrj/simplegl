@@ -40,6 +40,10 @@ void Model::load(string filename)
 {
     ModelLoader::load(filename);
     
+    top.x = bottom.x = _vertices[0];
+    top.y = bottom.y = _vertices[1];
+    top.z = bottom.z = _vertices[2];
+    
     for(int i = 0; i < _vertices.size(); i += 3)
         updateBoundingBox(_vertices[i], _vertices[i+1], _vertices[i+2]);
     
