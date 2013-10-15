@@ -15,7 +15,8 @@
 
 Engine::Engine(const char* windowName)
 {
-    camera = new Camera(windowName);
+    viewport = new Viewport(windowName);
+    camera = new Camera(viewport);
     objects = map<string, Object*>();
     x = y = z = 0;
     angleX = angleY = angleZ = 0;
@@ -36,7 +37,7 @@ void Engine::init(int *argc, char **argv)
     glutInit(argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 
-    camera->init();
+    viewport->init();
 
     // Default clear color
     glClearColor(0, 0, 0, 1);
@@ -44,9 +45,14 @@ void Engine::init(int *argc, char **argv)
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     glOrtho(-1, 1, -1, 1, -1, 1);
+    
     glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
+    
+    camera->init();
 }
 
 void Engine::focus()
@@ -104,12 +110,16 @@ void Engine::draw() const
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glLoadIdentity();
+    camera->apply();
+    
+    glPushMatrix();
     
     drawTransformations();
     drawAxis();
     drawGeom();
-
+    
+    glPopMatrix();
+    
     glutSwapBuffers();
 }
 

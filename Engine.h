@@ -17,6 +17,7 @@ class Engine : public Object
 {
     double x, y, z;
     double angleX, angleY, angleZ;
+    Viewport* viewport;
     Camera* camera;
     map<string, Object*> objects;
     
