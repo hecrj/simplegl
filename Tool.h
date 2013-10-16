@@ -3,7 +3,7 @@
  * Author: hector0193
  */
 #include "State.h"
-#include "Object.h"
+#include "Transformable.h"
 #include <list>
 
 using namespace std;
@@ -15,13 +15,13 @@ using namespace std;
 class Tool : public State
 {
 protected:
-    list<Object*> objects;
+    list<Transformable*> objects;
     
 public:
     Tool();
     virtual ~Tool();
-    void add(Object* object);
-    void remove(Object* object);
+    void add(Transformable* object);
+    void remove(Transformable* object);
     
 private:
 

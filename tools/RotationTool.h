@@ -2,7 +2,7 @@
  * File:   RotationTool.h
  * Author: hector0193
  */
-#include "../State.h"
+#include "../Tool.h"
 #include "../Camera.h"
 
 using namespace std;
@@ -10,15 +10,13 @@ using namespace std;
 #ifndef ROTATIONTOOL_H
 #define	ROTATIONTOOL_H
 
-class RotationTool : public State
+class RotationTool : public Tool
 {
-    Camera* camera;
     int lastY;
     int lastX;
     
 public:
-    RotationTool(Camera* camera);
-    RotationTool(const RotationTool& orig);
+    RotationTool();
     virtual ~RotationTool();
     string getDescription() const;
     void mousePressed(int buttonId, int state, int x, int y);

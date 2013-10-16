@@ -13,12 +13,11 @@
   #include <GL/freeglut.h>
 #endif
 
-#include <math.h>
 #include "utils/math.h"
 
 Object::Object()
 {
-    position.x = position.y = position.z = 0;
+    
     scales.x = scales.y = scales.z = 1;
 }
 
@@ -41,20 +40,6 @@ void Object::setColor(double r, double g, double b)
     color.r = r;
     color.g = g;
     color.b = b;
-}
-
-void Object::rotate(double x, double y, double z)
-{
-    angles.x = fmod(angles.x + x, 360);
-    angles.y = fmod(angles.y + y, 360);
-    angles.z = fmod(angles.z + z, 360);
-}
-
-void Object::translate(double x, double y, double z)
-{
-    position.x += x;
-    position.y += y;
-    position.z += z;
 }
 
 void Object::scale(double x, double y, double z)

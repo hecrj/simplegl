@@ -13,12 +13,12 @@ Tool::~Tool() {
 
 }
 
-void Tool::add(Object* object)
+void Tool::add(Transformable* object)
 {
     objects.push_back(object);
 }
 
-void Tool::remove(Object* object)
+void Tool::remove(Transformable* object)
 {
     objects.remove(object);
 }

@@ -11,14 +11,13 @@
 #endif
 
 #include "Camera.h"
-#include "Object.h"
+#include "lens/OrthogonalLens.h"
 #include <cmath>
 
 Camera::Camera(Viewport* viewport)
 {
     this->viewport = viewport;
-    position.x = position.y = position.z = 0;
-    angleX = angleY = 0;
+    lens = new OrthogonalLens();
     radius = sqrt(3);
     distance = 1;
     located = false;
@@ -26,7 +25,7 @@ Camera::Camera(Viewport* viewport)
 
 Camera::~Camera()
 {
-    delete viewport;
+    delete lens;
 }
 
 void Camera::init()
@@ -45,6 +44,20 @@ void Camera::init()
     // Enable depth
     glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glEnable(GL_DEPTH_TEST);
+}
+
+void Camera::setLens(Lens* lens)
+{
+    this->lens = lens;
+    
+    located = false;
+    
+    refocus();
+}
+
+Lens* Camera::getLens() const
+{
+    return lens;
 }
 
 void Camera::reshape(int width, int height)
@@ -74,25 +87,25 @@ void Camera::focus(Object* target, double distance)
     refocus();
 }
 
-void Camera::locate(double x, double y, double z)
+void Camera::translate(double x, double y, double z)
 {
-    position.x = x;
-    position.y = y;
-    position.z = z;
+    Transformable::translate(x, y, z);
     
     located = false;
 }
 
-void Camera::rotate(double x, double y)
+void Camera::rotate(double x, double y, double z)
 {
-    angleX = fmod(angleX + x, 360);
-    angleY = fmod(angleY + y, 360);
+    Transformable::rotate(x, y, z);
     
     located = false;
 }
 
 void Camera::render()
 {
+    glutSetWindow(viewport->getId());
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
     if(!located)
         relocate();
     
@@ -100,41 +113,29 @@ void Camera::render()
         target->draw();
     
     drawFocusSphere();
+    
+    glutSwapBuffers();
+}
+
+void Camera::redisplay()
+{
+    glutSetWindow(viewport->getId());
+    glutPostRedisplay();
 }
 
 void Camera::refocus()
 {
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    
-    double top, left, right, bottom;
-    top = right = radius;
-    left = bottom = -radius;
-    
-    double r = viewport->getAspectRatio();
-    
-    if(r > 1)
-    {
-        left *= r;
-        right *= r;
-    }
-    else
-    {
-        top /= r;
-        bottom /= r;
-    }
-    
-    glOrtho(left, right, bottom, top, -distance, distance+2*radius);
-    glMatrixMode(GL_MODELVIEW);
+    lens->focus(radius, distance, viewport->getAspectRatio());
 }
 
 void Camera::relocate()
 {
     glLoadIdentity();
     
-    glTranslated(0, 0, -radius);
-    glRotated(angleX, 1, 0, 0);
-    glRotated(angleY, 0, 1, 0);
+    lens->locate(radius, distance);
+    
+    glRotated(angles.x, 1, 0, 0);
+    glRotated(angles.y, 0, 1, 0);
     glTranslated(-position.x, -position.y, -position.z);
     
     located = true;

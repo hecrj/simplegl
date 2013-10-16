@@ -11,11 +11,12 @@
 #else
   #include <GL/gl.h>
   #include <GL/freeglut.h>
+#include <list>
 #endif
 
-RotationTool::RotationTool(Camera* camera)
+RotationTool::RotationTool()
 {
-    this->camera = camera;
+    
 }
 
 
@@ -47,7 +48,13 @@ void RotationTool::mouseMotion(int x, int y)
     lastX = x;
     lastY = y;
     
-    camera->rotate(rY, rX);
+    list<Transformable*>::iterator it = objects.begin();
+    
+    while(it != objects.end())
+    {
+        (*it)->rotate(rY, rX, 0);
+        ++it;
+    }
     
     glutPostRedisplay();
 }

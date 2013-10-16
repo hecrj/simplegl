@@ -25,12 +25,17 @@ Viewport::~Viewport()
 
 }
 
-int Viewport::getWidth()
+int Viewport::getId() const
+{
+    return id;
+}
+
+int Viewport::getWidth() const
 {
     return width;
 }
 
-int Viewport::getHeight()
+int Viewport::getHeight() const
 {
     return height;
 }
@@ -43,7 +48,7 @@ void Viewport::reshape(int width, int height)
     glViewport(0, 0, width, height);
 }
 
-double Viewport::getAspectRatio()
+double Viewport::getAspectRatio() const
 {
     return width / (double) height;
 }
@@ -51,7 +56,7 @@ double Viewport::getAspectRatio()
 void Viewport::init()
 {
     glutInitWindowSize(width, height);
-    glutCreateWindow(name);
+    id = glutCreateWindow(name);
 }
 
 Point* Viewport::getViewportVertex(int x, int y)

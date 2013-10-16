@@ -16,7 +16,6 @@ public:
     virtual ~Engine();
     void init(int *argc, char **argv);
     void loop();
-    void render(Camera* camera);
     
 private:
     

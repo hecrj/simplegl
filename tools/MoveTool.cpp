@@ -47,7 +47,7 @@ void MoveTool::mouseMotion(int x, int y)
     lastX = x;
     lastY = y;
     
-    list<Object*>::iterator it = objects.begin();
+    list<Transformable*>::iterator it = objects.begin();
     
     while(it != objects.end())
     {
