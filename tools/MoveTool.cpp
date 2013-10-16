@@ -13,10 +13,10 @@
   #include <GL/freeglut.h>
 #endif
 
-MoveTool::MoveTool(Viewport* window)
+MoveTool::MoveTool(Viewport* viewport)
 {
     lastX = lastY = 0;
-    this->window = window;
+    this->viewport = viewport;
 }
 
 MoveTool::~MoveTool()
@@ -41,8 +41,8 @@ void MoveTool::mousePressed(int buttonId, int state, int x, int y)
 
 void MoveTool::mouseMotion(int x, int y)
 {
-    double tX = (lastX - x) / (double)window->getWidth();
-    double tY = (lastY - y) / (double)window->getHeight();
+    double tX = (x - lastX) / (double)viewport->getWidth();
+    double tY = (y - lastY) / (double)viewport->getHeight();
     
     lastX = x;
     lastY = y;
@@ -51,7 +51,7 @@ void MoveTool::mouseMotion(int x, int y)
     
     while(it != objects.end())
     {
-        (*it)->translate(-tX, 0, -tY);
+        (*it)->translate(tX, 0, tY);
         ++it;
     }
     

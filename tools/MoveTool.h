@@ -10,7 +10,7 @@
 
 class MoveTool : public Tool
 {
-    Viewport* window;
+    Viewport* viewport;
     int lastX;
     int lastY;
     

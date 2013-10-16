@@ -41,13 +41,13 @@ void RotationTool::mousePressed(int buttonId, int state, int x, int y)
 
 void RotationTool::mouseMotion(int x, int y)
 {
-    int rX = lastX - x;
-    int rY = lastY - y;
+    int rX = x - lastX;
+    int rY = y - lastY;
     
     lastX = x;
     lastY = y;
     
-    camera->rotate(-rY, -rX);
+    camera->rotate(rY, rX);
     
     glutPostRedisplay();
 }
