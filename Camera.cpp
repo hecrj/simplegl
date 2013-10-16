@@ -11,6 +11,7 @@
 #endif
 
 #include "Camera.h"
+#include "Object.h"
 #include <cmath>
 
 Camera::Camera(Viewport* viewport)
@@ -20,7 +21,7 @@ Camera::Camera(Viewport* viewport)
     angleX = angleY = 0;
     radius = sqrt(3);
     distance = 1;
-    applied = false;
+    located = false;
 }
 
 Camera::~Camera()
@@ -30,7 +31,20 @@ Camera::~Camera()
 
 void Camera::init()
 {
+    viewport->init();
+    
+    // Default clear color
+    glClearColor(0, 0, 0, 1);
+    
+    // Default focus
     refocus();
+    
+    // Set identity in top modelview
+    glLoadIdentity();
+    
+    // Enable depth
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glEnable(GL_DEPTH_TEST);
 }
 
 void Camera::reshape(int width, int height)
@@ -45,12 +59,18 @@ Viewport* Camera::getViewport()
     return viewport;
 }
 
-void Camera::focus(double radius, double distance)
+void Camera::focus(Object* target)
 {
-    this->radius = radius + position.getDistance();
+    focus(target, 0);
+}
+
+void Camera::focus(Object* target, double distance)
+{
+    this->target = target;
+    this->radius = target->getContainerSphereRadius() + position.getDistance();
     this->distance = distance;
     
-    applied = false;
+    located = false;
     refocus();
 }
 
@@ -60,15 +80,26 @@ void Camera::locate(double x, double y, double z)
     position.y = y;
     position.z = z;
     
-    applied = false;
+    located = false;
 }
 
 void Camera::rotate(double x, double y)
 {
-    angleX = x;
-    angleY = y;
+    angleX = fmod(angleX + x, 360);
+    angleY = fmod(angleY + y, 360);
     
-    applied = false;
+    located = false;
+}
+
+void Camera::render()
+{
+    if(!located)
+        relocate();
+    
+    if(target != NULL)
+        target->draw();
+    
+    drawFocusSphere();
 }
 
 void Camera::refocus()
@@ -97,20 +128,19 @@ void Camera::refocus()
     glMatrixMode(GL_MODELVIEW);
 }
 
-void Camera::apply() const
+void Camera::relocate()
 {
-    if(applied)
-        return;
-    
     glLoadIdentity();
     
     glTranslated(0, 0, -radius);
     glRotated(angleX, 1, 0, 0);
     glRotated(angleY, 0, 1, 0);
     glTranslated(-position.x, -position.y, -position.z);
+    
+    located = true;
 }
 
-void Camera::drawContainerSphere() const
+void Camera::drawFocusSphere() const
 {
     glColor3d(0.2, 0.2, 0.2);
     glutWireSphere(radius, 50, 50);

@@ -32,7 +32,7 @@ public:
 protected:
     virtual void drawGeom() const = 0;
     virtual void drawTransformations() const;
-
+    
 };
 
 #endif	/* OBJECT_H */

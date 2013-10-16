@@ -5,6 +5,7 @@
 
 #include "Point.h"
 #include "Viewport.h"
+#include "Object.h"
 
 #ifndef CAMERA_H
 #define	CAMERA_H
@@ -12,10 +13,11 @@
 class Camera
 {
     Point position;
+    Viewport* viewport;
+    Object* target;
     double angleX, angleY;
     double radius, distance, zNear, zFar;
-    Viewport* viewport;
-    bool applied;
+    bool located;
     
 public:
     Camera(Viewport* viewport);
@@ -26,12 +28,14 @@ public:
     void locate(double x, double y, double z);
     void rotate(double x, double z);
     Viewport* getViewport();
-    void focus(double radius, double distance);
-    void apply() const;
-    void drawContainerSphere() const;
+    void focus(Object* target);
+    void focus(Object* target, double distance);
+    void render();
     
 private:
     void refocus();
+    void relocate();
+    void drawFocusSphere() const;
 };
 
 #endif	/* CAMERA_H */

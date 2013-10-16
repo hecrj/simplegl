@@ -13,9 +13,9 @@
   #include <GL/freeglut.h>
 #endif
 
-RotationTool::RotationTool()
+RotationTool::RotationTool(Camera* camera)
 {
-    
+    this->camera = camera;
 }
 
 
@@ -47,13 +47,7 @@ void RotationTool::mouseMotion(int x, int y)
     lastX = x;
     lastY = y;
     
-    list<Object*>::iterator it = objects.begin();
-    
-    while(it != objects.end())
-    {
-        (*it)->rotate(-rY, -rX, 0);
-        ++it;
-    }
+    camera->rotate(-rY, -rX);
     
     glutPostRedisplay();
 }

@@ -16,7 +16,7 @@
 
 Model::Model()
 {
-    scales.x = scales.y = scales.z = 1;
+    
 }
 
 Model::~Model()

@@ -1,43 +1,25 @@
 /* 
- * File:   Engine.h
+ * File:   Glut.h
  * Author: hector
  */
 
-#include <map>
-#include <string>
 #include "Camera.h"
-#include "Object.h"
 
-using namespace std;
+#ifndef GLUT_H
+#define	GLUT_H
 
-#ifndef ENGINE_H
-#define	ENGINE_H
-
-class Engine : public Object
+class Engine
 {
-    double x, y, z;
-    double angleX, angleY, angleZ;
-    Viewport* viewport;
-    Camera* camera;
-    map<string, Object*> objects;
     
 public:
-    Engine(const char* windowName);
+    Engine();
     virtual ~Engine();
-    Camera* getCamera();
-    void focus();
-    void focus(double distance);
     void init(int *argc, char **argv);
     void loop();
-    void addObject(string name, Object* object);
-    void removeObject(string name);
-    void draw() const;
-    double getMaxDimension() const;
+    void render(Camera* camera);
     
 private:
-    void drawAxis() const;
-    void drawGeom() const;
+    
 };
 
-#endif	/* ENGINE_H */
-
+#endif	/* GLUT_H */

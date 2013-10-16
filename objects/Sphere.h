@@ -8,7 +8,7 @@
 #define	SPHERE_H
 
 class Sphere : public Object
-{
+{   
     double radius;
     
 public:
