@@ -6,6 +6,7 @@
 #if defined(__APPLE__)
   #include <OpenGL/OpenGl.h>
   #include <GLUT/GLUT.h>
+  #include <OpenGL/glu.h>
 #else
   #include <GL/gl.h>
   #include <GL/freeglut.h>

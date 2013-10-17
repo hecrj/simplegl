@@ -125,11 +125,13 @@ void Camera::redisplay()
 
 void Camera::refocus()
 {
+    glutSetWindow(viewport->getId());
     lens->focus(radius, distance, viewport->getAspectRatio());
 }
 
 void Camera::relocate()
 {
+    glutSetWindow(viewport->getId());
     glLoadIdentity();
     
     lens->locate(radius, distance);
