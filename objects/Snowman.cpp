@@ -9,7 +9,7 @@
 #define HEAD_RADIUS 0.2
 #define NOSE_HEIGHT 0.2
 
-Snowman::Snowman(double x, double y, double z) : Object(x, y, z)
+Snowman::Snowman(double x, double y, double z) : Object(x, y + BODY_RADIUS, z)
 {
     body = new Sphere(0, 0, 0, BODY_RADIUS);
     head = new Sphere(0, 0.6, 0, HEAD_RADIUS);

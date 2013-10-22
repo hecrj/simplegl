@@ -20,6 +20,7 @@ public:
     virtual void leave();
     virtual void mouseMotion(int x, int y);
     virtual void mousePressed(int buttonId, int released, int x, int y);
+    virtual void keyPressed(unsigned char key, int x, int y);
     
 private:
 

@@ -3,7 +3,7 @@
  * Author: hector0193
  */
 
-#include "RotationTool.h"
+#include "NavigationTool.h"
 
 #if defined(__APPLE__)
   #include <OpenGL/OpenGl.h>
@@ -14,24 +14,24 @@
 #include <list>
 #endif
 
-RotationTool::RotationTool()
+NavigationTool::NavigationTool()
 {
     
 }
 
 
-RotationTool::~RotationTool()
+NavigationTool::~NavigationTool()
 {
     
 }
 
-string RotationTool::getDescription() const
+string NavigationTool::getDescription() const
 {
     return "Rotation tool:\n"
             "Press and move the mouse to rotate some objects.";
 }
 
-void RotationTool::mousePressed(int buttonId, int state, int x, int y)
+void NavigationTool::mousePressed(int buttonId, int state, int x, int y)
 {
     if(buttonId != GLUT_LEFT_BUTTON || state != GLUT_DOWN)
         return;
@@ -40,7 +40,7 @@ void RotationTool::mousePressed(int buttonId, int state, int x, int y)
     lastY = y;
 }
 
-void RotationTool::mouseMotion(int x, int y)
+void NavigationTool::mouseMotion(int x, int y)
 {
     int rX = x - lastX;
     int rY = y - lastY;
@@ -53,6 +53,27 @@ void RotationTool::mouseMotion(int x, int y)
     while(it != objects.end())
     {
         (*it)->rotate(rY, rX, 0);
+        ++it;
+    }
+    
+    glutPostRedisplay();
+}
+
+void NavigationTool::keyPressed(unsigned char key, int x, int y)
+{
+    double distance;
+    distance = 0;
+    
+    if(key == 'w')
+        distance = 0.2;
+    else if(key == 's')
+        distance = -0.2;
+    
+    list<Transformable*>::iterator it = objects.begin();
+    
+    while(it != objects.end())
+    {
+        (*it)->moveFront(distance);
         ++it;
     }
     

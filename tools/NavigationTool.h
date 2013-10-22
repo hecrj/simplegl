@@ -10,18 +10,18 @@ using namespace std;
 #ifndef ROTATIONTOOL_H
 #define	ROTATIONTOOL_H
 
-class RotationTool : public Tool
+class NavigationTool : public Tool
 {
     int lastY;
     int lastX;
     
 public:
-    RotationTool();
-    virtual ~RotationTool();
+    NavigationTool();
+    virtual ~NavigationTool();
     string getDescription() const;
     void mousePressed(int buttonId, int state, int x, int y);
     void mouseMotion(int x, int y);
-    
+    void keyPressed(unsigned char key, int x, int y);
 private:
 
 };

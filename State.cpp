@@ -39,3 +39,6 @@ void State::mouseMotion(int x, int y)
 
 void State::mousePressed(int buttonId, int released, int x, int y)
 { }
+
+void State::keyPressed(unsigned char key, int x, int y)
+{ }
