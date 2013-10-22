@@ -27,13 +27,13 @@ void Transformable::rotate(double x, double y, double z)
     angles.y = fmod(angles.y + y, 360);
     angles.z = fmod(angles.z + z, 360);
     
-    x = angles.x * -DEG_TO_RAD;
-    y = angles.y * -DEG_TO_RAD;
-    z = angles.z * -DEG_TO_RAD;
+    x = angles.x * DEG_TO_RAD;
+    y = angles.y * DEG_TO_RAD;
+    z = angles.z * DEG_TO_RAD;
     
-    direction.x = asin(y) * acos(z);
-    direction.y = asin(x) * acos(z);
-    direction.z = acos(x) * acos(y);
+    direction.x = sin(y) * cos(z);
+    direction.y = -1 * sin(x) * cos(z);
+    direction.z = -1 * cos(x) * cos(y);
 }
 
 void Transformable::translate(double x, double y, double z)

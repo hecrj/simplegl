@@ -47,5 +47,5 @@ void PerspectiveLens::focus(double radius, double distance, double aspectRatio) 
 
 void PerspectiveLens::locate(double radius, double distance) const
 {
-    glTranslated(0, 0, -radius-distance-ZNEAR);
+    //glTranslated(0, 0, -radius-distance-ZNEAR);
 }
