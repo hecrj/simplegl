@@ -45,5 +45,5 @@ void Transformable::translate(double x, double y, double z)
 
 void Transformable::moveFront(double distance)
 { 
-    translate(distance * direction.x, distance * direction.y, distance * direction.z);
+    translate(distance * direction.x, 0, distance * direction.z);
 }
