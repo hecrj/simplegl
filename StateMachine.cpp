@@ -10,7 +10,7 @@ using namespace std;
 
 StateMachine::StateMachine()
 {
-
+    keysDown = vector<bool>(KEYS_SIZE, false);
 }
 
 StateMachine::~StateMachine()
@@ -63,4 +63,26 @@ void StateMachine::printHelp()
 State* StateMachine::getCurrentState()
 {
     return current;
+}
+
+void StateMachine::keyDown(unsigned char key, int x, int y)
+{
+    keysDown[key] = true;
+    
+    current->keyDown(key, x, y, keysDown);
+}
+
+void StateMachine::keyUp(unsigned char key, int x, int y)
+{
+    keysDown[key] = false;
+    
+    if(key == 'h')
+        printHelp();
+    else
+        current->keyUp(key, x, y, keysDown);
+}
+
+void StateMachine::idle()
+{
+    current->idle(keysDown);
 }

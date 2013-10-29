@@ -21,7 +21,8 @@ public:
     string getDescription() const;
     void mousePressed(int buttonId, int state, int x, int y);
     void mouseMotion(int x, int y);
-    void keyPressed(unsigned char key, int x, int y);
+    void idle(const vector<bool> &keysDown);
+    
 private:
 
 };

@@ -59,20 +59,28 @@ void NavigationTool::mouseMotion(int x, int y)
     glutPostRedisplay();
 }
 
-void NavigationTool::keyPressed(unsigned char key, int x, int y)
+void NavigationTool::idle(const vector<bool> &keysDown)
 {
-    double distance;
-    distance = 0;
+    double distance = 0;
+    double rotateY = 0;
     
-    if(key == 'w')
-        distance = 0.2;
-    else if(key == 's')
-        distance = -0.2;
+    if(keysDown['w'])
+        distance = 0.15;
+    
+    if(keysDown['s'])
+        distance = -0.15;
+    
+    if(keysDown['d'])
+        rotateY = 5;
+    
+    if(keysDown['a'])
+        rotateY = -5;
     
     list<Transformable*>::iterator it = objects.begin();
     
     while(it != objects.end())
     {
+        (*it)->rotate(0, rotateY, 0);
         (*it)->moveFront(distance);
         ++it;
     }

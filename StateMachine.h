@@ -5,15 +5,19 @@
 
 #include "State.h"
 #include <map>
+#include <vector>;
 
 using namespace std;
 
 #ifndef STATEMACHINE_H
 #define	STATEMACHINE_H
 
+#define KEYS_SIZE 256
+
 class StateMachine
 {
     map<unsigned char, State*> states;
+    vector<bool> keysDown;
     State* current;
     
 public:
@@ -24,6 +28,9 @@ public:
     void trigger(unsigned char keyTrigger);
     void printHelp();
     State* getCurrentState();
+    void keyDown(unsigned char key, int x, int y);
+    void keyUp(unsigned char key, int x, int y);
+    void idle();
     
 private:
 

@@ -40,5 +40,11 @@ void State::mouseMotion(int x, int y)
 void State::mousePressed(int buttonId, int released, int x, int y)
 { }
 
-void State::keyPressed(unsigned char key, int x, int y)
+void State::keyUp(unsigned char key, int x, int y, const vector<bool> &keysDown)
+{ }
+
+void State::keyDown(unsigned char key, int x, int y, const vector<bool> &keysDown)
+{ }
+
+void State::idle(const vector<bool> &keysDown)
 { }
