@@ -128,13 +128,26 @@ void Model::drawGeom() const
 {
     glBegin(GL_TRIANGLES);
     
+    int previous = -1;
+    
     for(int i = 0; i < _faces.size(); ++i)
     {
-        glColor4fv(Materials[_faces[i].mat].diffuse);
-        glNormal3dv(_faces[i].normalC);
+        if(previous != _faces[i].mat)
+        {
+            previous = _faces[i].mat;
+            
+            glColor4fv(Materials[previous].diffuse);
+            glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, Materials[previous].ambient);
+            glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, Materials[previous].diffuse);
+            glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, Materials[previous].specular);
+            glMaterialf (GL_FRONT_AND_BACK, GL_SHININESS, Materials[previous].shininess);
+        }
         
         for(int j = 0; j < 3; ++j)
+        {
+            glNormal3dv(&_normals[_faces[i].n[j]]);
             glVertex3dv(&_vertices[_faces[i].v[j]]);
+        }
     }
     
     glEnd();
@@ -144,8 +157,10 @@ void Model::drawGeom() const
 
 void Model::drawBoundingBox() const
 {
+    GLfloat color[] = {0.7f, 0.7f, 0.7f};
     glColor3d(0.7, 0.7, 0.7);
-
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color);
+    
     drawBase(0);
     drawBase(height);
 }

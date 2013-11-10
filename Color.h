@@ -1,11 +1,20 @@
 #ifndef COLOR_H
 #define	COLOR_H
 
+#if defined(__APPLE__)
+  #include <OpenGL/OpenGl.h>
+  #include <GLUT/GLUT.h>
+#else
+  #include <GL/gl.h>
+  #include <GL/freeglut.h>
+#endif
+
 struct Color
 {
-    double r, g, b;
+    GLfloat rgb[3];
+    
     Color();
-    Color(double r, double g, double b);
+    Color(float r, float g, float b);
     virtual ~Color();
 };
 

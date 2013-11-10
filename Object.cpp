@@ -37,9 +37,9 @@ Object::~Object()
 
 void Object::setColor(double r, double g, double b)
 {
-    color.r = r;
-    color.g = g;
-    color.b = b;
+    color.rgb[0] = r;
+    color.rgb[1] = g;
+    color.rgb[2] = b;
 }
 
 void Object::scale(double x, double y, double z)
@@ -61,7 +61,7 @@ void Object::draw() const
 
 void Object::drawTransformations() const
 {
-    glColor3d(color.r, color.g, color.b);
+    glColor3fv(color.rgb);
     glTranslated(position.x, position.y, position.z);
     glRotated(angles.x, 1, 0, 0);
     glRotated(angles.y, 0, 1, 0);

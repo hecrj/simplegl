@@ -2,16 +2,14 @@
 
 Color::Color()
 {
-    r = 1;
-    g = 1;
-    b = 1;
+    rgb[0] = rgb[1] = rgb[2] = 1;
 }
 
-Color::Color(double r, double g, double b)
+Color::Color(float r, float g, float b)
 {
-    this->r = r;
-    this->g = g;
-    this->b = b;
+    rgb[0] = r;
+    rgb[1] = g;
+    rgb[2] = b;
 }
 
 Color::~Color()

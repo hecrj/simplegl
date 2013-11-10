@@ -41,7 +41,13 @@ Triangle::~Triangle()
 void Triangle::drawGeom() const
 {
     glBegin(GL_TRIANGLES);
-
+    
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, color.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color.rgb);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 6);
+    glNormal3d(0, 1, 0);
+    
     a->draw();
     b->draw();
     c->draw();
