@@ -14,10 +14,10 @@
 #include "lens/OrthogonalLens.h"
 #include <cmath>
 
-Camera::Camera(Viewport* viewport)
+Camera::Camera(Viewport* viewport, Lens* lens)
 {
     this->viewport = viewport;
-    lens = new OrthogonalLens();
+    this->lens = lens;
     radius = sqrt(3);
     distance = 1;
     located = false;
@@ -26,24 +26,6 @@ Camera::Camera(Viewport* viewport)
 Camera::~Camera()
 {
     delete lens;
-}
-
-void Camera::init()
-{
-    viewport->init();
-    
-    // Default clear color
-    glClearColor(0, 0, 0, 1);
-    
-    // Default focus
-    refocus();
-    
-    // Set identity in top modelview
-    glLoadIdentity();
-    
-    // Enable depth
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glEnable(GL_DEPTH_TEST);
 }
 
 void Camera::setLens(Lens* lens)

@@ -30,7 +30,7 @@ Wall::~Wall() {
 
 double Wall::getMaxDimension() const
 {
-    return height;
+    return 0.34; // TODO Improve sphere calculation
 }
 
 void Wall::drawGeom() const

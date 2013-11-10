@@ -31,7 +31,7 @@ void FirstPersonLens::focus(double radius, double distance, double aspectRatio) 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     
-    gluPerspective(70, aspectRatio, ZNEAR, ZNEAR + 2*(radius+distance));
+    gluPerspective(60, aspectRatio, ZNEAR, ZNEAR + 2*(radius+distance));
     
     glMatrixMode(GL_MODELVIEW);
 }

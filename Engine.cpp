@@ -15,7 +15,7 @@
 
 Engine::Engine()
 {
-    
+    activeCamera = NULL;
 }
 
 Engine::~Engine()
@@ -29,7 +29,55 @@ void Engine::init(int *argc, char **argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 }
 
+void Engine::addCamera(unsigned char key, Camera* camera)
+{
+    if(activeCamera == NULL)
+        activeCamera = camera;
+    
+    cameras[key] = camera;
+}
+
+Camera* Engine::getActiveCamera()
+{
+    return activeCamera;
+}
+
+void Engine::trigger(unsigned char key)
+{
+    map<unsigned char, Camera*>::const_iterator it = cameras.find(key);
+    
+    if(it != cameras.end())
+    {
+        activeCamera = it->second;
+        activeCamera->refocus();
+        activeCamera->relocate();
+    }
+}
+
 void Engine::loop()
 {
+    // Default clear color
+    glClearColor(0, 0, 0, 1);
+    
+    // Set identity in top modelview
+    glLoadIdentity();
+    
+    // Enable depth
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    glEnable(GL_DEPTH_TEST);
+    
+    // Focus camera
+    activeCamera->refocus();
+    
     glutMainLoop();
+}
+
+void Engine::render()
+{
+    activeCamera->render();
+}
+
+void Engine::reshape(int width, int height)
+{
+    activeCamera->reshape(width, height);
 }

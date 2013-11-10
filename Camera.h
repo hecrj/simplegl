@@ -21,13 +21,12 @@ class Camera : public Transformable
     bool located;
     
 public:
-    Camera(Viewport* viewport);
+    Camera(Viewport* viewport, Lens* lens);
     virtual ~Camera();
     
     Lens* getLens() const;
     Viewport* getViewport();
     
-    void init();
     void setLens(Lens* lens);
     void reshape(int width, int height);
     virtual void translate(double x, double y, double z);
@@ -36,10 +35,10 @@ public:
     void focus(Object* target, double distance);
     void render();
     void redisplay();
-    
-private:
     void refocus();
     void relocate();
+    
+private:
     void drawFocusSphere() const;
 };
 

@@ -5,7 +5,7 @@
 
 #include "State.h"
 #include <map>
-#include <vector>;
+#include <vector>
 
 using namespace std;
 

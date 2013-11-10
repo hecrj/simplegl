@@ -79,7 +79,10 @@ void StateMachine::keyUp(unsigned char key, int x, int y)
     if(key == 'h')
         printHelp();
     else
+    {
         current->keyUp(key, x, y, keysDown);
+        trigger(key);
+    }
 }
 
 void StateMachine::idle()

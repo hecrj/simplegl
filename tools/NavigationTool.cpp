@@ -27,36 +27,9 @@ NavigationTool::~NavigationTool()
 
 string NavigationTool::getDescription() const
 {
-    return "Rotation tool:\n"
-            "Press and move the mouse to rotate some objects.";
-}
-
-void NavigationTool::mousePressed(int buttonId, int state, int x, int y)
-{
-    if(buttonId != GLUT_LEFT_BUTTON || state != GLUT_DOWN)
-        return;
-    
-    lastX = x;
-    lastY = y;
-}
-
-void NavigationTool::mouseMotion(int x, int y)
-{
-    int rX = x - lastX;
-    int rY = y - lastY;
-    
-    lastX = x;
-    lastY = y;
-    
-    list<Transformable*>::iterator it = objects.begin();
-    
-    while(it != objects.end())
-    {
-        (*it)->rotate(rY, rX, 0);
-        ++it;
-    }
-    
-    glutPostRedisplay();
+    return "Navigation tool:\n"
+            "Press A, D keys or move the mouse to rotate some objects/cameras.\n"
+            "Pres W, S keys to move the objects/cameras in the direction they are facing.";
 }
 
 void NavigationTool::idle(const vector<bool> &keysDown)
