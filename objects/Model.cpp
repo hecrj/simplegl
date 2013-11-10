@@ -14,9 +14,9 @@
   #include <GL/freeglut.h>
 #endif
 
-Model::Model()
+Model::Model(string filename)
 {
-    
+    load(filename);
 }
 
 Model::~Model()
@@ -58,6 +58,8 @@ void Model::load(string filename)
     rightFrontBottom.x = top.x - center.x;
     rightFrontBottom.y = bottom.y - center.y;
     rightFrontBottom.z = top.z - center.z;
+    
+    angles.y = 180;
     
     double scaleFactor = 2.0;
     
@@ -108,6 +110,13 @@ double Model::getRFBZ() const
 double Model::getMaxDimension() const
 {
     return max(width / 2, height / 2, depth / 2);
+}
+
+void Model::positionateBottomCenter(double x, double y, double z)
+{
+    position.x = x;
+    position.y = y + (height/2) * scales.y;
+    position.z = z;
 }
 
 void Model::drawTransformations() const

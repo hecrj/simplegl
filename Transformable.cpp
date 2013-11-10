@@ -33,7 +33,7 @@ void Transformable::rotate(double x, double y, double z)
     
     direction.x = sin(y) * cos(z);
     direction.y = -1 * sin(x) * cos(z);
-    direction.z = -1 * cos(x) * cos(y);
+    direction.z = cos(x) * cos(y);
 }
 
 void Transformable::translate(double x, double y, double z)

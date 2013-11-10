@@ -23,9 +23,8 @@ class Model : public ModelLoader
     double depth;
     
 public:
-    Model();
+    Model(string filename);
     virtual ~Model();
-    void load(string filename);
     double getWidth() const;
     double getHeight() const;
     double getDepth() const;
@@ -33,12 +32,14 @@ public:
     double getRFBY() const;
     double getRFBZ() const;
     double getMaxDimension() const;
+    void positionateBottomCenter(double x, double y, double z);
 
 protected:
     void drawGeom() const;
     void drawTransformations() const;
     
 private:
+    void load(string filename);
     void updateBoundingBox(double x, double y, double z);
     void drawBoundingBox() const;
     void drawBase(double height) const;
