@@ -55,7 +55,6 @@ void Scene::removeObject(string name)
     if(it == objects.end())
         return;
 
-    delete (*it).second;
     objects.erase(it);
 }
 

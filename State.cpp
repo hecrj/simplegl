@@ -48,3 +48,8 @@ void State::keyDown(unsigned char key, int x, int y, const vector<bool> &keysDow
 
 void State::idle(const vector<bool> &keysDown)
 { }
+
+bool State::isAction() const
+{
+    return false;
+}

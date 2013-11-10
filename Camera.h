@@ -19,6 +19,7 @@ class Camera : public Transformable
     Object* target;
     double radius, distance, zNear, zFar;
     bool located;
+    bool focused;
     
 public:
     Camera(Viewport* viewport, Lens* lens);

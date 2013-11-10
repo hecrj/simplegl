@@ -16,6 +16,7 @@ class State
 public:
     State();
     virtual ~State();
+    virtual bool isAction() const;
     virtual string getDescription() const;
     virtual void enter();
     virtual void leave();

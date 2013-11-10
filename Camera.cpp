@@ -21,6 +21,7 @@ Camera::Camera(Viewport* viewport, Lens* lens)
     radius = sqrt(3);
     distance = 1;
     located = false;
+    focused = false;
 }
 
 Camera::~Camera()
@@ -33,8 +34,7 @@ void Camera::setLens(Lens* lens)
     this->lens = lens;
     
     located = false;
-    
-    refocus();
+    focused = false;
 }
 
 Lens* Camera::getLens() const
@@ -46,7 +46,7 @@ void Camera::reshape(int width, int height)
 {
     viewport->reshape(width, height);
     
-    refocus();
+    focused = false;
 }
 
 Viewport* Camera::getViewport()
@@ -66,7 +66,7 @@ void Camera::focus(Object* target, double distance)
     this->distance = distance;
     
     located = false;
-    refocus();
+    focused = false;
 }
 
 void Camera::translate(double x, double y, double z)
@@ -87,6 +87,9 @@ void Camera::render()
 {
     glutSetWindow(viewport->getId());
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
+    if(!focused)
+        refocus();
     
     if(!located)
         relocate();
@@ -109,6 +112,8 @@ void Camera::refocus()
 {
     glutSetWindow(viewport->getId());
     lens->focus(radius, distance, viewport->getAspectRatio());
+    
+    focused = true;
 }
 
 void Camera::relocate()

@@ -37,9 +37,17 @@ void StateMachine::trigger(unsigned char keyTrigger)
 
     if(it != states.end())
     {
-        current->leave();
-        current = it->second;
-        current->enter();
+        if(it->second->isAction())
+        {
+            it->second->enter();
+            it->second->leave();
+        }
+        else
+        {
+            current->leave();
+            current = it->second;
+            current->enter();            
+        }
     }
 }
 
