@@ -58,9 +58,7 @@ void Model::load(string filename)
     rightFrontBottom.x = top.x - center.x;
     rightFrontBottom.y = bottom.y - center.y;
     rightFrontBottom.z = top.z - center.z;
-    
-    angles.y = 180;
-    
+
     double scaleFactor = 2.0;
     
     if(width > height)

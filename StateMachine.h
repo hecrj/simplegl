@@ -18,10 +18,12 @@ class StateMachine
 {
     map<unsigned char, State*> states;
     vector<bool> keysDown;
+    State* global;
     State* current;
     
 public:
     StateMachine();
+    void setGlobal(State* global);
     virtual ~StateMachine();
     void add(unsigned char key, State* state);
     void init();

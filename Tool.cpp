@@ -5,12 +5,30 @@
 
 #include "Tool.h"
 
+#if defined(__APPLE__)
+  #include <OpenGL/OpenGl.h>
+  #include <GLUT/GLUT.h>
+#else
+  #include <GL/gl.h>
+  #include <GL/freeglut.h>
+#include <list>
+#endif
+
 Tool::Tool() {
 
 }
 
 Tool::~Tool() {
 
+}
+
+void Tool::mousePressed(int buttonId, int state, int x, int y)
+{
+    if(buttonId != GLUT_LEFT_BUTTON || state != GLUT_DOWN)
+        return;
+    
+    lastX = x;
+    lastY = y;
 }
 
 void Tool::add(Transformable* object)

@@ -16,12 +16,15 @@ class Tool : public State
 {
 protected:
     list<Transformable*> objects;
+    int lastY;
+    int lastX;
     
 public:
     Tool();
     virtual ~Tool();
     void add(Transformable* object);
     void remove(Transformable* object);
+    virtual void mousePressed(int buttonId, int state, int x, int y);
     
 private:
 

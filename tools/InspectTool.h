@@ -3,25 +3,19 @@
  * Author: hector
  */
 #include "../Tool.h"
-
+#include "../Engine.h"
 #ifndef INSPECTTOOL_H
 #define	INSPECTTOOL_H
 
 class InspectTool : public Tool
 {
-protected:
-    list<Transformable*> mouseRotate;
-    int lastX;
-    int lastY;
-        
+    Engine* engine;
+    
 public:
-    InspectTool();
+    InspectTool(Engine* engine);
     virtual ~InspectTool();
     virtual string getDescription() const;
-    void addToMouseRotation(Transformable* object);
-    void mousePressed(int buttonId, int state, int x, int y);
     void mouseMotion(int x, int y);
-    void idle(const vector<bool> &keysDown);
     
 private:
 

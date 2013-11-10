@@ -9,11 +9,8 @@ using namespace std;
 #ifndef ROTATIONTOOL_H
 #define	ROTATIONTOOL_H
 
-class NavigationTool : public InspectTool
-{
-    int lastY;
-    int lastX;
-    
+class NavigationTool : public Tool
+{   
 public:
     NavigationTool();
     virtual ~NavigationTool();

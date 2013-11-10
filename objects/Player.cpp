@@ -8,6 +8,8 @@
 Player::Player(string filename, Camera* camera) : Model(filename)
 {
     this->camera = camera;
+    
+    camera->rotate(0, 180, 0);
 }
 
 void Player::translate(double x, double y, double z)

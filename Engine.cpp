@@ -51,6 +51,7 @@ void Engine::trigger(unsigned char key)
         activeCamera = it->second;
         activeCamera->refocus();
         activeCamera->relocate();
+        activeCamera->redisplay();
     }
 }
 

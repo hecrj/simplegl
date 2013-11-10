@@ -11,6 +11,7 @@ using namespace std;
 StateMachine::StateMachine()
 {
     keysDown = vector<bool>(KEYS_SIZE, false);
+    global = NULL;
 }
 
 StateMachine::~StateMachine()
@@ -29,6 +30,16 @@ void StateMachine::add(unsigned char key, State* state)
 void StateMachine::init()
 {
     current->enter();
+}
+
+void StateMachine::setGlobal(State* global)
+{
+    if(this->global != NULL)
+        this->global->leave();
+    
+    this->global = global;
+    
+    this->global->enter();
 }
 
 void StateMachine::trigger(unsigned char keyTrigger)
@@ -77,6 +88,9 @@ void StateMachine::keyDown(unsigned char key, int x, int y)
 {
     keysDown[key] = true;
     
+    if(global != NULL)
+        global->keyDown(key, x, y, keysDown);
+    
     current->keyDown(key, x, y, keysDown);
 }
 
@@ -88,6 +102,9 @@ void StateMachine::keyUp(unsigned char key, int x, int y)
         printHelp();
     else
     {
+        if(global != NULL)
+            global->keyUp(key, x, y, keysDown);
+        
         current->keyUp(key, x, y, keysDown);
         trigger(key);
     }
@@ -95,5 +112,8 @@ void StateMachine::keyUp(unsigned char key, int x, int y)
 
 void StateMachine::idle()
 {
+    if(global != NULL)
+        global->idle(keysDown);
+    
     current->idle(keysDown);
 }
