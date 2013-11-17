@@ -8,9 +8,9 @@
 
 using namespace std;
 
-State::State()
+State::State(string name)
 {
-
+    this->name = name;
 }
 
 State::~State()
@@ -18,16 +18,22 @@ State::~State()
 
 }
 
+string State::getName() const
+{
+    return name;
+}
+
 string State::getDescription() const
 {
-    return "Unknow description";
+    return "Unknown description";
 }
     
 // Actions called when entering/leaving a state
 void State::enter()
 {
-    cout << "-------------------" << endl;
+    cout << "Selected state: " << getName() << endl;
     cout << getDescription() << endl;
+    cout << endl;
 }
 
 void State::leave()

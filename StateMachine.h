@@ -30,6 +30,9 @@ public:
     void trigger(unsigned char keyTrigger);
     void printHelp();
     State* getCurrentState();
+    
+    void mousePressed(int buttonId, int state, int x, int y);
+    void mouseMotion(int x, int y);
     void keyDown(unsigned char key, int x, int y);
     void keyUp(unsigned char key, int x, int y);
     void idle();

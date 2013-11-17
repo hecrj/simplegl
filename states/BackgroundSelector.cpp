@@ -13,7 +13,7 @@
   #include <GL/freeglut.h>
 #endif
 
-BackgroundSelector::BackgroundSelector(Viewport* window)
+BackgroundSelector::BackgroundSelector(Viewport* window) : State("Background selector")
 {
     this->window = window;
 }
@@ -25,8 +25,7 @@ BackgroundSelector::~BackgroundSelector()
 
 string BackgroundSelector::getDescription() const
 {
-    return "Background selector:\n"
-            "Hold the mouse pressed and move it around the window to select the background color.";
+    return "Hold the mouse pressed and move it around the window to select the background color.";
 }
 
 void BackgroundSelector::mouseMotion(int x, int y)

@@ -14,7 +14,8 @@
 #include <list>
 #endif
 
-Tool::Tool() {
+Tool::Tool(string name) : State(name)
+{
 
 }
 

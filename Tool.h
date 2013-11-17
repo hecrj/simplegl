@@ -20,7 +20,7 @@ protected:
     int lastX;
     
 public:
-    Tool();
+    Tool(string name);
     virtual ~Tool();
     void add(Transformable* object);
     void remove(Transformable* object);

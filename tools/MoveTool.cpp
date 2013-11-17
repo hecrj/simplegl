@@ -13,7 +13,7 @@
   #include <GL/freeglut.h>
 #endif
 
-MoveTool::MoveTool(Viewport* viewport)
+MoveTool::MoveTool(Viewport* viewport) : Tool("Move tool")
 {
     lastX = lastY = 0;
     this->viewport = viewport;
@@ -26,8 +26,7 @@ MoveTool::~MoveTool()
 
 string MoveTool::getDescription() const
 {
-    return "MoveTool:\n"
-            "Use the mouse to move around some objects.";
+    return "Use the mouse to move around some objects.";
 }
 
 void MoveTool::mousePressed(int buttonId, int state, int x, int y)

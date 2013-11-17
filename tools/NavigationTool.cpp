@@ -14,7 +14,7 @@
 #include <list>
 #endif
 
-NavigationTool::NavigationTool()
+NavigationTool::NavigationTool() : Tool("Navigation tool")
 {
     
 }
@@ -27,9 +27,8 @@ NavigationTool::~NavigationTool()
 
 string NavigationTool::getDescription() const
 {
-    return "Navigation tool:\n"
-            "Press A, D keys or move the mouse to rotate some objects/cameras.\n"
-            "Pres W, S keys to move the objects/cameras in the direction they are facing.";
+    return "Press A, D keys or move the mouse to rotate some objects/cameras.\n"
+           "Press W, S keys to move the objects/cameras in the direction they are facing.";
 }
 
 void NavigationTool::idle(const vector<bool> &keysDown)
@@ -45,7 +44,7 @@ void NavigationTool::idle(const vector<bool> &keysDown)
     
     if(keysDown['d'])
         rotateY = 5;
-    
+
     if(keysDown['a'])
         rotateY = -5;
     

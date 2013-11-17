@@ -5,7 +5,7 @@
 
 #include "InspectTool.h"
 
-InspectTool::InspectTool(Engine* engine)
+InspectTool::InspectTool(Engine* engine) : Tool("Inspect tool")
 {
     this->engine = engine;
 }
@@ -17,8 +17,7 @@ InspectTool::~InspectTool()
 
 string InspectTool::getDescription() const
 {
-    return "Inspect tool:\n"
-           "Press and move the mouse to rotate objects/cameras. You can use W, A, S, D too.";
+    return "Press and move the mouse to rotate objects/cameras.";
 }
 
 void InspectTool::mouseMotion(int x, int y)

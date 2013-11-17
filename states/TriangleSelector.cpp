@@ -17,7 +17,7 @@
 
 using namespace std;
 
-TriangleSelector::TriangleSelector(Viewport* window, Triangle** triangle)
+TriangleSelector::TriangleSelector(Viewport* window, Triangle** triangle) : State("Triangle selector")
 {
     this->window = window;
     this->triangle = triangle;
@@ -33,8 +33,7 @@ TriangleSelector::~TriangleSelector()
 
 string TriangleSelector::getDescription() const
 {
-    return "Triangle selector:\n"
-            "Click to define every vertex of the new triangle.";
+    return "Click to define every vertex of the new triangle.";
 }
 
 void TriangleSelector::enter()

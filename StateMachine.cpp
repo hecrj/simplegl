@@ -64,19 +64,32 @@ void StateMachine::trigger(unsigned char keyTrigger)
 
 void StateMachine::printHelp()
 {
-    cout << "-------------------" << endl;
-    cout << "Available actions:" << endl;
+    cout << "States:" << endl;
+    cout << "    ";
+    cout << "Press the key to change to the desired state and show more information:" << endl;
+    
+    cout << "    " << "Key " << "    " << "Name" << endl;
 
     map<unsigned char, State*>::const_iterator it = states.begin();
 
     while(it != states.end())
     {
-        cout << it->second->getDescription() << endl;
-        cout << "Press '" << it->first << "' to enable it." << endl;
+        cout << "    " ;
+        cout << it->first << "   " << "    ";
+        cout << it->second->getName();
+        
+        if(it->second == current)
+            cout << '*';
+        
         cout << endl;
 
         ++it;
     }
+    
+    cout << endl;
+    cout << "    ";
+    cout << "* Current state" << endl;
+    cout << endl;
 }
 
 State* StateMachine::getCurrentState()
@@ -98,16 +111,11 @@ void StateMachine::keyUp(unsigned char key, int x, int y)
 {
     keysDown[key] = false;
     
-    if(key == 'h')
-        printHelp();
-    else
-    {
-        if(global != NULL)
-            global->keyUp(key, x, y, keysDown);
-        
-        current->keyUp(key, x, y, keysDown);
-        trigger(key);
-    }
+    if(global != NULL)
+        global->keyUp(key, x, y, keysDown);
+    
+    current->keyUp(key, x, y, keysDown);
+    trigger(key);
 }
 
 void StateMachine::idle()
@@ -116,4 +124,20 @@ void StateMachine::idle()
         global->idle(keysDown);
     
     current->idle(keysDown);
+}
+
+void StateMachine::mouseMotion(int x, int y)
+{
+    if(global != NULL)
+        global->mouseMotion(x, y);
+    
+    current->mouseMotion(x, y);
+}
+
+void StateMachine::mousePressed(int buttonId, int state, int x, int y)
+{
+    if(global != NULL)
+        global->mousePressed(buttonId, state, x, y);
+    
+    current->mousePressed(buttonId, state, x, y);
 }

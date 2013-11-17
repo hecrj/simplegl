@@ -19,6 +19,9 @@ Object::Object()
 {
     
     scales.x = scales.y = scales.z = 1;
+    visible = true;
+    
+    setColor(Color::WHITE);
 }
 
 Object::Object(double x, double y, double z)
@@ -28,6 +31,7 @@ Object::Object(double x, double y, double z)
     position.z = z;
     
     scales.x = scales.y = scales.z = 1;
+    visible = true;
 }
 
 Object::~Object()
@@ -42,6 +46,11 @@ void Object::setColor(double r, double g, double b)
     color.rgb[2] = b;
 }
 
+void Object::setColor(const Color &color)
+{
+    setColor(color.rgb[0], color.rgb[1], color.rgb[2]);
+}
+
 void Object::scale(double x, double y, double z)
 {
     scales.x = x;
@@ -51,22 +60,34 @@ void Object::scale(double x, double y, double z)
 
 void Object::draw() const
 {
+    if(not visible)
+        return;
+    
     glPushMatrix();
     
     drawTransformations();
+    drawMaterials();
     drawGeom();
     
     glPopMatrix();
 }
 
 void Object::drawTransformations() const
-{
-    glColor3fv(color.rgb);
+{   
     glTranslated(position.x, position.y, position.z);
     glRotated(angles.x, 1, 0, 0);
     glRotated(angles.y, 0, 1, 0);
     glRotated(angles.z, 0, 0, 1);
     glScaled(scales.x, scales.y, scales.z);
+}
+
+void Object::drawMaterials() const
+{
+    glColor3fv(color.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, Color::WHITE.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color.rgb);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50);
 }
 
 double Object::getContainerSphereRadius() const
@@ -76,4 +97,9 @@ double Object::getContainerSphereRadius() const
     maxDim = max(maxDim * scales.x, maxDim * scales.y, maxDim * scales.z);
     
     return maxDim + position.getDistance();
+}
+
+void Object::toggle()
+{
+    visible = !visible;
 }

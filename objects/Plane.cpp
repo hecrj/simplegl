@@ -15,49 +15,49 @@
   #include <GL/freeglut.h>
 #endif
 
+const double Plane::RESOLUTION = 50.0;
+
 Plane::Plane(double x, double y, double z, double length2) : Object(x, y, z)
 {
     length = length2 / 2.0;
-    triangle1 = new Triangle(
-            new Point(-length, 0, -length),
-            new Point(-length, 0, length),
-            new Point(length, 0, length)
-            );
-    
-    triangle2 = new Triangle(
-            new Point(-length, 0, -length),
-            new Point(length, 0, -length),
-            new Point(length, 0, length)
-            );
 }
 
 Plane::~Plane()
 {
-    delete triangle1;
-    delete triangle2;
-}
-
-void Plane::setColor(double r, double g, double b)
-{
-    triangle1->setColor(r, g, b);
-    triangle2->setColor(r, g, b);
+    
 }
 
 void Plane::drawGeom() const
 {
-    triangle1->draw();
-    triangle2->draw();
+    glBegin(GL_TRIANGLES);
+    
+    glNormal3d(0, 1, 0);
+    
+    double sublength = 2.0 * length / RESOLUTION;
+    
+    for(int i = 0; i < RESOLUTION; ++i)
+    {
+        double x = i * sublength;
+        
+        for(int k = 0; k < RESOLUTION; ++k)
+        {
+            double z = k * sublength;
+            
+            glVertex3d(-length + x, 0, -length + z);
+            glVertex3d(-length + x, 0, -length + z + sublength);
+            glVertex3d(-length + x + sublength, 0, -length + z);
+
+            glVertex3d(-length + x + sublength, 0, -length + z);
+            glVertex3d(-length + x + sublength, 0, -length + z + sublength);
+            glVertex3d(-length + x, 0, -length + z + sublength);
+        }
+    }
+    
+    glEnd();
 }
 
 double Plane::getMaxDimension() const
 {
-    return max(triangle1->getMaxDimension(), triangle2->getMaxDimension(), 0);
+    return sqrt(2) * length;
 }
 
-double Plane::getContainerSphereRadius() const
-{
-    double d1 = getMaxDimension();
-    double d2 = position.getDistance();
-    
-    return sqrt(d1*d1 + d2*d2);
-}

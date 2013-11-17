@@ -12,11 +12,13 @@ using namespace std;
 
 class State
 {
-
+    string name;
+    
 public:
-    State();
+    State(string name);
     virtual ~State();
     virtual bool isAction() const;
+    string getName() const;
     virtual string getDescription() const;
     virtual void enter();
     virtual void leave();

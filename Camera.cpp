@@ -17,7 +17,9 @@
 Camera::Camera(Viewport* viewport, Lens* lens)
 {
     this->viewport = viewport;
-    this->lens = lens;
+    this->lens.push_back(lens);
+    
+    activeLens = 0;
     radius = sqrt(3);
     distance = 1;
     located = false;
@@ -26,20 +28,12 @@ Camera::Camera(Viewport* viewport, Lens* lens)
 
 Camera::~Camera()
 {
-    delete lens;
-}
-
-void Camera::setLens(Lens* lens)
-{
-    this->lens = lens;
     
-    located = false;
-    focused = false;
 }
 
-Lens* Camera::getLens() const
+void Camera::addLens(Lens* lens)
 {
-    return lens;
+    this->lens.push_back(lens);
 }
 
 void Camera::reshape(int width, int height)
@@ -111,7 +105,7 @@ void Camera::redisplay()
 void Camera::refocus()
 {
     glutSetWindow(viewport->getId());
-    lens->focus(radius, distance, viewport->getAspectRatio());
+    lens[activeLens]->focus(radius, distance, viewport->getAspectRatio());
     
     focused = true;
 }
@@ -121,7 +115,7 @@ void Camera::relocate()
     glutSetWindow(viewport->getId());
     glLoadIdentity();
     
-    lens->locate(radius, distance);
+    lens[activeLens]->locate(radius, distance);
     
     glRotated(angles.x, 1, 0, 0);
     glRotated(angles.y, 0, 1, 0);
@@ -134,4 +128,12 @@ void Camera::drawFocusSphere() const
 {
     glColor3d(0.2, 0.2, 0.2);
     glutWireSphere(radius, 50, 50);
+}
+
+void Camera::toggle()
+{
+    activeLens = (activeLens+1) % lens.size();
+    
+    focused = false;
+    located = false;
 }

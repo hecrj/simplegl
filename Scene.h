@@ -10,8 +10,8 @@
 
 using namespace std;
 
-#ifndef ENGINE_H
-#define	ENGINE_H
+#ifndef SCENE_H
+#define	SCENE_H
 
 class Scene : public Object
 {

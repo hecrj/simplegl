@@ -11,11 +11,17 @@
 
 struct Color
 {
-    GLfloat rgb[3];
+    GLfloat rgb[4];
     
     Color();
     Color(float r, float g, float b);
+    Color(float r, float g, float b, float a);
     virtual ~Color();
+    
+public:
+    static const Color WHITE;
+    static const Color BLUE;
+    static const Color GREEN;
 };
 
 #endif	/* COLOR_H */
