@@ -16,6 +16,7 @@
 Scene::Scene()
 {
     objects = map<string, Object*>();
+    camera = NULL;
 }
 
 Scene::~Scene()
@@ -46,6 +47,11 @@ double Scene::getMaxDimension() const
 void Scene::addObject(string name, Object* object)
 {
     objects[name] = object;
+}
+
+void Scene::setCamera(Camera* camera)
+{
+    this->camera = camera;
 }
 
 void Scene::removeObject(string name)
@@ -89,4 +95,20 @@ void Scene::drawGeom() const
         (*it).second->draw();
         ++it;
     }
+}
+
+void Scene::translate(double x, double y, double z)
+{
+    Object::translate(x, y, z);
+    
+    if(camera != NULL)
+        camera->translate(x, y, z);
+}
+
+void Scene::rotate(double x, double y, double z)
+{
+    Object::rotate(x, y, z);
+    
+    if(camera != NULL)
+        camera->rotate(x, y, z);
 }

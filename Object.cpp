@@ -17,11 +17,10 @@
 
 Object::Object()
 {
-    
     scales.x = scales.y = scales.z = 1;
     visible = true;
     
-    setColor(Color::WHITE);
+    color = Color::WHITE;
 }
 
 Object::Object(double x, double y, double z)
@@ -39,16 +38,17 @@ Object::~Object()
 
 }
 
-void Object::setColor(double r, double g, double b)
+void Object::setColor(double r, double g, double b, double a)
 {
     color.rgb[0] = r;
     color.rgb[1] = g;
     color.rgb[2] = b;
+    color.rgb[3] = a;
 }
 
 void Object::setColor(const Color &color)
 {
-    setColor(color.rgb[0], color.rgb[1], color.rgb[2]);
+    setColor(color.rgb[0], color.rgb[1], color.rgb[2], color.rgb[3]);
 }
 
 void Object::scale(double x, double y, double z)
@@ -102,4 +102,9 @@ double Object::getContainerSphereRadius() const
 void Object::toggle()
 {
     visible = !visible;
+}
+
+bool Object::isVisible() const
+{
+    return visible;
 }

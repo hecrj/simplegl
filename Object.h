@@ -22,12 +22,13 @@ public:
     Object(double x, double y, double z);
     virtual ~Object();
     virtual void setColor(const Color &color);
-    virtual void setColor(double r, double g, double b);
+    virtual void setColor(double r, double g, double b, double a);
     void scale(double x, double y, double z);
     virtual void draw() const;
     virtual double getContainerSphereRadius() const;
     virtual double getMaxDimension() const = 0;
     virtual void toggle();
+    bool isVisible() const;
     
 protected:
     virtual void drawGeom() const = 0;

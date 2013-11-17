@@ -14,7 +14,7 @@ Snowman::Snowman(double x, double y, double z) : Object(x, y + BODY_RADIUS, z)
     body = new Sphere(0, 0, 0, BODY_RADIUS);
     head = new Sphere(0, 0.6, 0, HEAD_RADIUS);
     nose = new Cone(0.1, 0.6, 0, 0.1, NOSE_HEIGHT);
-    nose->setColor(1, 0.5, 0.3);
+    nose->setColor(Color::ORANGE);
     nose->rotate(0, 90, 0);
 }
 

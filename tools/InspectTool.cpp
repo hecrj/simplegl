@@ -28,6 +28,6 @@ void InspectTool::mouseMotion(int x, int y)
     lastX = x;
     lastY = y;
     
-    engine->getActiveCamera()->rotate(rY, rX, 0);
+    engine->getActiveCamera()->rotate(-rY, -rX, 0);
     engine->getActiveCamera()->redisplay();
 }

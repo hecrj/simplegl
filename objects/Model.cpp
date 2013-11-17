@@ -14,6 +14,8 @@
   #include <GL/freeglut.h>
 #endif
 
+bool Model::normalPerVertex = true;
+
 Model::Model(string filename)
 {
     load(filename);
@@ -22,6 +24,13 @@ Model::Model(string filename)
 Model::~Model()
 {
 
+}
+
+bool Model::toggleNormalPerVertex()
+{
+    normalPerVertex = !normalPerVertex;
+    
+    return normalPerVertex;
 }
 
 inline void Model::updateBoundingBox(double x, double y, double z)
@@ -143,9 +152,14 @@ void Model::drawGeom() const
             glMaterialf (GL_FRONT_AND_BACK, GL_SHININESS, Materials[previous].shininess);
         }
         
+        if(not normalPerVertex)
+            glNormal3dv(_faces[i].normalC);
+        
         for(int j = 0; j < 3; ++j)
         {
-            glNormal3dv(&_normals[_faces[i].n[j]]);
+            if(normalPerVertex)
+                glNormal3dv(&_normals[_faces[i].n[j]]);
+            
             glVertex3dv(&_vertices[_faces[i].v[j]]);
         }
     }

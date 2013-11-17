@@ -22,6 +22,8 @@ class Model : public ModelLoader
     double height;
     double depth;
     
+    static bool normalPerVertex;
+    
 public:
     Model(string filename);
     virtual ~Model();
@@ -33,6 +35,8 @@ public:
     double getRFBZ() const;
     double getMaxDimension() const;
     void positionateBottomCenter(double x, double y, double z);
+    
+    static bool toggleNormalPerVertex();
 
 protected:
     void drawGeom() const;
@@ -43,7 +47,6 @@ private:
     void updateBoundingBox(double x, double y, double z);
     void drawBoundingBox() const;
     void drawBase(double height) const;
-
 };
 
 #endif	/* MODEL_H */

@@ -72,7 +72,7 @@ void Camera::translate(double x, double y, double z)
 
 void Camera::rotate(double x, double y, double z)
 {
-    Transformable::rotate(x, y, z);
+    Transformable::rotate(-x, -y, -z);
     
     located = false;
 }

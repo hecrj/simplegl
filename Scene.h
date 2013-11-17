@@ -16,13 +16,17 @@ using namespace std;
 class Scene : public Object
 {
     map<string, Object*> objects;
+    Camera* camera;
     
 public:
     Scene();
     virtual ~Scene();
     void addObject(string name, Object* object);
+    void setCamera(Camera* camera);
     void removeObject(string name);
     double getMaxDimension() const;
+    void translate(double x, double y, double z);
+    void rotate(double x, double y, double z);
     
 protected:
     virtual void drawGeom() const;

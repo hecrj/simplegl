@@ -43,10 +43,10 @@ void NavigationTool::idle(const vector<bool> &keysDown)
         distance = -0.15;
     
     if(keysDown['d'])
-        rotateY = 5;
+        rotateY = -5;
 
     if(keysDown['a'])
-        rotateY = -5;
+        rotateY = 5;
     
     list<Transformable*>::iterator it = objects.begin();
     

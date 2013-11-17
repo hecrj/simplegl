@@ -22,7 +22,10 @@ StateMachine::~StateMachine()
 void StateMachine::add(unsigned char key, State* state)
 {
     if(states.empty())
+    {
         current = state;
+        current->enter();
+    }
 
     states[key] = state;
 }
@@ -64,9 +67,7 @@ void StateMachine::trigger(unsigned char keyTrigger)
 
 void StateMachine::printHelp()
 {
-    cout << "States:" << endl;
-    cout << "    ";
-    cout << "Press the key to change to the desired state and show more information:" << endl;
+    cout << "Tools:" << endl;
     
     cout << "    " << "Key " << "    " << "Name" << endl;
 
@@ -86,9 +87,6 @@ void StateMachine::printHelp()
         ++it;
     }
     
-    cout << endl;
-    cout << "    ";
-    cout << "* Current state" << endl;
     cout << endl;
 }
 

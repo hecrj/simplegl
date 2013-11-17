@@ -18,10 +18,16 @@ struct Color
     Color(float r, float g, float b, float a);
     virtual ~Color();
     
+    Color brighter(float p) const;
+    Color darker(float p) const;
+    
 public:
     static const Color WHITE;
+    static const Color GRAY;
     static const Color BLUE;
     static const Color GREEN;
+    static const Color ORANGE;
+    static const Color YELLOW;
 };
 
 #endif	/* COLOR_H */

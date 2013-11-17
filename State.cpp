@@ -31,7 +31,7 @@ string State::getDescription() const
 // Actions called when entering/leaving a state
 void State::enter()
 {
-    cout << "Selected state: " << getName() << endl;
+    cout << "Selected: " << getName() << endl;
     cout << getDescription() << endl;
     cout << endl;
 }
