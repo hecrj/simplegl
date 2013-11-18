@@ -54,9 +54,6 @@ void Engine::init(Viewport* viewport)
     // Configure callbacks
     configureCallbacks(viewport);
     
-    // Configure state machine
-    configureStates(states);
-    
     // Default clear color
     glClearColor(0, 0, 0, 1);
     
@@ -73,6 +70,11 @@ void Engine::init(Viewport* viewport)
     
     // Focus camera
     activeCamera->refocus();
+}
+
+StateMachine* Engine::getStates()
+{
+    return states;
 }
 
 void Engine::configureCallbacks(Viewport* viewport)

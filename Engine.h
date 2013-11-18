@@ -14,6 +14,14 @@ using namespace std;
 #ifndef ENGINE_H
 #define	ENGINE_H
 
+void refresh_callback();
+void reshape_callback(int width, int height);
+void mousePressed_callback(int buttonId, int state, int x, int y);
+void mouseMotion_callback(int x, int y);
+void keyUp_callback(unsigned char key, int x, int y);
+void keyDown_callback(unsigned char key, int x, int y);
+void idle_callback();
+
 class Engine
 {
     StateMachine* states;
@@ -34,6 +42,8 @@ public:
     
     void addCamera(unsigned char key, Camera* camera, string name);
     Camera* getActiveCamera();
+    
+    StateMachine* getStates();
     
     void addAction(unsigned char key, Toggler* toggler, string description);
     
@@ -58,14 +68,5 @@ private:
     void actionHelp();
     void printLine(unsigned char key, string s);
 };
-
-void refresh_callback();
-void reshape_callback(int width, int height);
-void mousePressed_callback(int buttonId, int state, int x, int y);
-void mouseMotion_callback(int x, int y);
-void keyUp_callback(unsigned char key, int x, int y);
-void keyDown_callback(unsigned char key, int x, int y);
-void idle_callback();
-void configureStates(StateMachine* states);
 
 #endif	/* ENGINE_H */
