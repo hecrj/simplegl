@@ -28,6 +28,7 @@ Engine::Engine()
     defaultCamera = NULL;
     states = new StateMachine();
     lightingEnabled = true;
+    resetFunction = NULL;
     
     ACTIVE = this;
 }
@@ -266,6 +267,14 @@ void Engine::reset()
     activeCamera->refocus();
     activeCamera->relocate();
     activeCamera->redisplay();
+    
+    if(resetFunction != NULL)
+        (*resetFunction)();
+}
+
+void Engine::setResetCallback(void (*resetFunction)())
+{
+    this->resetFunction = resetFunction;
 }
 
 /** FUNCTIONAL CALLBACKS */

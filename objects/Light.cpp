@@ -73,3 +73,15 @@ void Light::toggle()
     else
         glDisable(id);
 }
+
+void Light::enable()
+{
+    if(not isVisible())
+        toggle();
+}
+
+void Light::disable()
+{
+    if(isVisible())
+        toggle();
+}

@@ -26,6 +26,8 @@ public:
     Light(GLenum id, bool isDirectional);
     virtual ~Light();
     void toggle();
+    void enable();
+    void disable();
     double getMaxDimension() const;
     virtual void setColor(const Color& color);
     virtual void setColor(double r, double g, double b, double a);

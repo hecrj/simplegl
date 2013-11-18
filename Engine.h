@@ -30,6 +30,7 @@ class Engine
     map<unsigned char, pair<Camera*, string>* > cameras;
     map<unsigned char, pair<Toggler*, string>* > actions;
     bool lightingEnabled;
+    void (*resetFunction)();
     
 public:
     Engine();
@@ -54,6 +55,7 @@ public:
     void keyDown(unsigned char key, int x, int y);
     void idle();
     void reset();
+    void setResetCallback(void (*resetFunction)());
     
     static void initGlut(int *argc, char **argv);
     static Engine* getActive();
