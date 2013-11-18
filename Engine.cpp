@@ -25,6 +25,7 @@ Engine* Engine::getActive()
 Engine::Engine()
 {
     activeCamera = NULL;
+    defaultCamera = NULL;
     states = new StateMachine();
     lightingEnabled = true;
     
@@ -147,7 +148,10 @@ void Engine::printLine(unsigned char key, string s)
 void Engine::addCamera(unsigned char key, Camera* camera, string name)
 {
     if(activeCamera == NULL)
+    {
         activeCamera = camera;
+        defaultCamera = camera;
+    }
     
     cameras[key] = new pair<Camera*, string>(camera, name);
 }
@@ -187,6 +191,9 @@ void Engine::keyUp(unsigned char key, int x, int y)
     
     else if(key == 'i')
         toggleLighting();
+    
+    else if(key == 'r')
+        reset();
     
     triggerCamera(key);
     triggerAction(key);
@@ -246,6 +253,17 @@ void Engine::mousePressed(int buttonId, int state, int x, int y)
 void Engine::idle()
 {
     states->idle();
+}
+
+void Engine::reset()
+{
+    activeCamera = defaultCamera;
+    activeCamera->moveTo(0, 0, 0);
+    activeCamera->rotateTo(0, 0, 0);
+    
+    activeCamera->refocus();
+    activeCamera->relocate();
+    activeCamera->redisplay();
 }
 
 /** FUNCTIONAL CALLBACKS */

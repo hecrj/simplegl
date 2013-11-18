@@ -30,6 +30,8 @@ public:
     virtual void toggle();
     bool isVisible() const;
     
+    static void applyMaterial(const Color& color);
+    
 protected:
     virtual void drawGeom() const = 0;
     virtual void drawTransformations() const;

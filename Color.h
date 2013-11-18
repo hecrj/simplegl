@@ -24,8 +24,10 @@ struct Color
 public:
     static const Color WHITE;
     static const Color GRAY;
+    static const Color GRAY_DARK;
     static const Color BLUE;
     static const Color GREEN;
+    static const Color RED;
     static const Color ORANGE;
     static const Color YELLOW;
 };

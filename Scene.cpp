@@ -68,15 +68,15 @@ void Scene::drawAxis() const
 {
     glBegin(GL_LINES);
 
-    glColor3d(1, 0, 0);
+    Object::applyMaterial(Color::RED);
     glVertex3d(0, 0, 0);
     glVertex3d(1, 0, 0);
-
-    glColor3d(0, 1, 0);
+    
+    Object::applyMaterial(Color::GREEN);
     glVertex3d(0, 0, 0);
     glVertex3d(0, 1, 0);
 
-    glColor3d(0, 0, 1);
+    Object::applyMaterial(Color::BLUE.darker(0.2));
     glVertex3d(0, 0, 0);
     glVertex3d(0, 0, 1);
 

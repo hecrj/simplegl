@@ -126,7 +126,7 @@ void Camera::relocate()
 
 void Camera::drawFocusSphere() const
 {
-    glColor3d(0.2, 0.2, 0.2);
+    Object::applyMaterial(Color::GRAY_DARK);
     glutWireSphere(radius, 50, 50);
 }
 

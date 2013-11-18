@@ -17,6 +17,7 @@ using namespace std;
 class Engine
 {
     StateMachine* states;
+    Camera* defaultCamera;
     Camera* activeCamera;
     map<unsigned char, pair<Camera*, string>* > cameras;
     map<unsigned char, pair<Toggler*, string>* > actions;
@@ -42,6 +43,7 @@ public:
     void keyUp(unsigned char key, int x, int y);
     void keyDown(unsigned char key, int x, int y);
     void idle();
+    void reset();
     
     static void initGlut(int *argc, char **argv);
     static Engine* getActive();

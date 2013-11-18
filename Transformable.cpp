@@ -47,3 +47,17 @@ void Transformable::moveFront(double distance)
 { 
     translate(distance * direction.x, 0, distance * direction.z);
 }
+
+void Transformable::moveTo(double x, double y, double z)
+{
+    position.x = x;
+    position.y = y;
+    position.z = z;
+}
+
+void Transformable::rotateTo(double x, double y, double z)
+{
+    angles.x = x;
+    angles.y = y;
+    angles.z = z;
+}

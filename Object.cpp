@@ -83,11 +83,7 @@ void Object::drawTransformations() const
 
 void Object::drawMaterials() const
 {
-    glColor3fv(color.rgb);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color.rgb);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, Color::WHITE.rgb);
-    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color.rgb);
-    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50);
+    applyMaterial(color);
 }
 
 double Object::getContainerSphereRadius() const
@@ -107,4 +103,13 @@ void Object::toggle()
 bool Object::isVisible() const
 {
     return visible;
+}
+
+void Object::applyMaterial(const Color& color)
+{
+    glColor3fv(color.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, color.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, Color::WHITE.rgb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, color.rgb);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 50);
 }

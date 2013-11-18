@@ -2,8 +2,10 @@
 
 const Color Color::WHITE(0.8, 0.8, 0.8);
 const Color Color::GRAY(0.5, 0.5, 0.5);
+const Color Color::GRAY_DARK(0.3, 0.3, 0.3);
 const Color Color::BLUE(0.3, 0.3, 0.8);
 const Color Color::GREEN(0.3, 0.8, 0.3);
+const Color Color::RED(0.8, 0.3, 0.3);
 const Color Color::ORANGE(1, 0.5, 0.3);
 const Color Color::YELLOW(0.8, 0.8, 0.3);
 
